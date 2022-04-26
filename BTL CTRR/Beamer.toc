@@ -1,0 +1,13 @@
+\babel@toc {english}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Phần i}{3}{0}{1}
+\beamer@sectionintoc {2}{Phần ii}{34}{0}{2}
+\beamer@sectionintoc {3}{Phần iii}{48}{0}{3}
+\beamer@sectionintoc {4}{Phần iv}{60}{0}{4}
+\beamer@sectionintoc {5}{Phần v }{73}{0}{5}
+\beamer@sectionintoc {6}{Phần vi}{109}{0}{6}
+\beamer@sectionintoc {7}{Phần vii}{142}{0}{7}
+\beamer@sectionintoc {8}{Phần viii}{156}{0}{8}
+\beamer@sectionintoc {9}{Phần ix}{170}{0}{9}
+\beamer@sectionintoc {10}{Phần ix}{201}{0}{10}

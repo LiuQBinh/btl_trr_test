@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Nhóm câu hỏi liên quan đến tổng quát dữ liệu}{2}{section.1}%
+\contentsline {section}{\numberline {2}Nhóm câu hỏi liên quan đến mô tả thống kê cơ bản dữ liệu}{13}{section.2}%
+\contentsline {section}{\numberline {3}Nhóm câu hỏi liên quan đến dữ liệu thể hiện thu thập dữ liệu}{18}{section.3}%
+\contentsline {section}{\numberline {4}Nhóm câu hỏi liên quan đến trực quan dữ liệu}{21}{section.4}%
+\contentsline {section}{\numberline {5}Nhóm câu hỏi liên quan đến trực quan dữ liệu theo thời gian là tháng}{27}{section.5}%
+\contentsline {section}{\numberline {6}Nhóm câu hỏi liên quan đến trực quan dữ liệu theo trung bình 7 ngày gần nhất}{43}{section.6}%
+\contentsline {section}{\numberline {7}Nhóm câu hỏi liên quan đến tất cả quốc gia theo thời gian là tháng}{55}{section.7}%
+\contentsline {section}{\numberline {8}Nhóm câu hỏi liên quan đến tất cả quốc gia theo trung bình 7 ngày gần nhất}{61}{section.8}%
+\contentsline {section}{\numberline {9}Nhóm câu hỏi liên quan đến sự tương quan giữa nhiễm bệnh và tử vong}{68}{section.9}%
+\contentsline {section}{\numberline {10}Nhóm câu hỏi riêng}{80}{section.10}%

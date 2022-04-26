@@ -1,0 +1,2241 @@
+\documentclass[a4paper]{article}
+\usepackage{vntex}
+%\usepackage[english,vietnam]{babel}
+%\usepackage[utf8]{inputenc}
+
+%\usepackage[utf8]{inputenc}
+%\usepackage[francais]{babel}
+\usepackage {amsmath}
+\usepackage{a4wide,amssymb,epsfig,latexsym,array,hhline,fancyhdr}
+\usepackage[normalem]{ulem}
+%\usepackage{soul}
+
+\usepackage[makeroom]{cancel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol,longtable,amscd}
+\usepackage{diagbox}%Make diagonal lines in tables
+\usepackage{booktabs}
+\usepackage{alltt}
+\usepackage[framemethod=tikz]{mdframed}% For highlighting paragraph backgrounds
+\usepackage{caption,subcaption}
+
+\usepackage{lastpage}
+\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}							% Standard graphics package
+\usepackage{array}
+\usepackage{tabularx, caption}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{rotating}
+\usepackage{graphics}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{epsfig}
+\usepackage{tikz}
+\usetikzlibrary{arrows,snakes,backgrounds}
+\usepackage[unicode]{hyperref}
+\hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true} 
+%\usepackage{pstcol} 								% PSTricks with the standard color package
+
+\usepackage[normalem]{ulem}
+
+\newtheorem{theorem}{{\bf Định lý}}
+\newtheorem{property}{{\bf Tính chất}}
+\newtheorem{proposition}{{\bf Mệnh đề}}
+\newtheorem{corollary}[proposition]{{\bf Hệ quả}}
+\newtheorem{lemma}[proposition]{{\bf Bổ đề}}
+\theoremstyle{definition}
+\newtheorem{exer}{Bài toán}
+
+\def\thesislayout{	% A4: 210 × 297
+	\geometry{
+		a4paper,
+		total={160mm,240mm},  % fix over page
+		left=30mm,
+		top=30mm,
+	}
+}
+\thesislayout
+
+%\usepackage{fancyhdr}
+\setlength{\headheight}{40pt}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[L]{
+	\begin{tabular}{rl}
+		\begin{picture}(25,15)(0,0)
+			\put(0,-8){\includegraphics[width=8mm, height=8mm]{IMG/hcmut.png}}
+			%\put(0,-8){\epsfig{width=10mm,figure=hcmut.eps}}
+		\end{picture}&
+		%\includegraphics[width=8mm, height=8mm]{hcmut.png} & %
+		\begin{tabular}{l}
+			\textbf{\bf \ttfamily Trường Đại Học Bách Khoa Tp.Hồ Chí Minh}\\
+			\textbf{\bf \ttfamily Khoa Khoa Học \& Kỹ Thuật Máy Tính}
+		\end{tabular} 	
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{l}
+		\tiny \bf \\
+		\tiny \bf 
+\end{tabular}  }
+\fancyfoot{} % clear all footer fields
+\fancyfoot[L]{\scriptsize \ttfamily DT01-NHOM1-1845}
+\fancyfoot[R]{\scriptsize \ttfamily Trang {\thepage}/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0.3pt}
+
+
+%%%
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
+\makeatletter
+\newcounter {subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection .\@alph\c@subsubsubsection}
+\newcommand\subsubsubsection{\@startsection{subsubsubsection}{4}{\z@}%
+	{-3.25ex\@plus -1ex \@minus -.2ex}%
+	{1.5ex \@plus .2ex}%
+	{\normalfont\normalsize\bfseries}}
+\newcommand*\l@subsubsubsection{\@dottedtocline{3}{10.0em}{4.1em}}
+\newcommand*{\subsubsubsectionmark}[1]{}
+\makeatother
+
+\everymath{\color{blue}}%make in-line maths symbols blue to read/check easily
+
+\sloppy
+\captionsetup[figure]{labelfont={small,bf},textfont={small,it},belowskip=-1pt,aboveskip=-9pt}
+%space remove between caption, figure, and text
+\captionsetup[table]{labelfont={small,bf},textfont={small,it},belowskip=-1pt,aboveskip=7pt}
+%space remove between caption, table, and text
+
+%\floatplacement{figure}{H}%forced here float placement automatically for figures
+%\floatplacement{table}{H}%forced here float placement automatically for table
+%the following settings (11 lines) are to remove white space before or after the figures and tables
+%\setcounter{topnumber}{2}
+%\setcounter{bottomnumber}{2}
+%\setcounter{totalnumber}{4}
+%\renewcommand{\topfraction}{0.85}
+%\renewcommand{\bottomfraction}{0.85}
+%\renewcommand{\textfraction}{0.15}
+%\renewcommand{\floatpagefraction}{0.8}
+%\renewcommand{\textfraction}{0.1}
+\setlength{\floatsep}{5pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{5pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+
+\thesislayout
+
+\begin{document}
+	
+	\begin{titlepage}
+		\begin{center}
+			ĐẠI HỌC QUỐC GIA THÀNH PHỐ HỒ CHÍ MINH \\
+			TRƯỜNG ĐẠI HỌC BÁCH KHOA \\
+			KHOA KHOA HỌC \& KỸ THUẬT MÁY TÍNH 
+		\end{center}
+		
+		\vspace{1cm}
+		
+		\begin{figure}[h!]
+			\begin{center}
+				\includegraphics[width=3cm]{IMG/hcmut.png}
+			\end{center}
+		\end{figure}
+		
+		\vspace{1cm}
+		
+		
+		\begin{center}
+			\begin{tabular}{c}
+				\multicolumn{1}{l}{\textbf{{\Large CẤU TRÚC RỜI RẠC CHO KHMT (CO1007)}}}\\
+				~~\\
+				\hline
+				\\
+				\textbf{\large Thống kê khảo sát kết quả Covid-19}\\
+				\textbf{\large môn Cấu trúc rời rạc}
+				\\
+				\hline
+			\end{tabular}
+		\end{center}
+		
+		\vspace{1.5cm}
+		
+		\begin{table}[!h]
+			\begin{tabular}{rrl}
+				\hspace{5 cm} & GVHD: & Huỳnh Tường Nguyên\\
+				\hspace{5 cm} &  & Nguyễn Ngọc Lễ\\
+				
+				& SV thực hiện: & Vũ Tuấn Hưng -- 2033150 \\
+				& & Phạm Hoàng Vĩ -- 1937055 \\
+				& & Lưu Quốc Bình -- 2033009 \\
+				& & Nguyễn Thị Kim Khoa -- 2049573 \\
+				& & Nguyễn Tiến Đăng Khoa -- 1832026 \\
+			\end{tabular}
+		\end{table}
+		\vspace{1.5cm}
+		\begin{center}
+			{\footnotesize Tp. Hồ Chí Minh, Tháng 04/2022}
+		\end{center}
+	\end{titlepage}
+	
+	
+	%\thispagestyle{empty}
+	
+	\newpage
+	\tableofcontents
+	\newpage
+	
+	
+\section{Nhóm câu hỏi liên quan đến tổng quát dữ liệu}\label{part1}
+\begin{enumerate}[1)]
+	\item Tập mẫu thể hiện thu thập dữ liệu vào các năm nào.
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f1: A \to B$ với $f1(x)$ là hàm lấy ra năm từ ngày của bản ghi $x$
+		\item Vậy $B$ là tập hợp năm được thống kê
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.3\linewidth]{IMG/i1_getyears.png}
+		\vspace*{5mm}
+		\caption{Dữ liệu thu thập qua các năm}
+		\label{fig:i1_getyears}
+	\end{figure}
+	
+	\item Số lượng đất nước và định danh của mỗi đất nước (hiển thị 10 đất nước đầu tiên).
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to C$ với $f2(x)$ là hàm lấy bộ (iso\_code, location) từ bản ghi $x$
+		\item Số đất nước: $x =  \lvert C \rvert$
+		\item Tập hợp 10 quốc gia đầu tiên: $D = \{c_{i} | c_{i} \in C \land i \in N \land i \geq 1 \land i \leq 10\}$
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{IMG/i2_iso_country.png}
+		\vspace*{5mm}
+		\caption{Hiển thị 10 đất nước đầu tiên theo iso\_code và Country}
+		\label{fig:i2_iso_country}
+	\end{figure}
+			\clearpage
+	\item Số lượng châu lục trong tập mẫu
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to B$ với $f$ là hàm lấy ra châu lục từ bản ghi của $A$
+		\item $ \lvert B \rvert$: số các châu lục
+		\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.4\linewidth]{IMG/i3_continent.png}
+		\vspace*{5mm}
+		\caption{Số lượng châu lục trong tập mẫu}
+		\label{fig:i3_continent}
+	\end{figure}
+	
+	\item Số lượng dữ liệu thể hiện thu thập dữ liệu được trong từng châu lục và tổng số.
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to B$ với $f$ là hàm lấy ra châu lục từ bản ghi của $A$, $b_{i} \in B$
+		\item $x_{i} = \sum_{1}^{\infty} 1 \forall f(A) = b_{i}$: số lượng dữ liệu thu thập từng châu lục
+		\item $x = \sum_{1}^{\infty} x_{i}$: tổng số dữ liệu thu thập
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.4\linewidth]{IMG/i4_continent_observe.png}
+		\vspace*{5mm}
+		\caption{Dữ liệu thu thập của từng châu lục}
+		\label{fig:i4_continent_observe}
+	\end{figure}
+\clearpage
+	\item Số lượng dữ liệu thể hiện thu thập dữ liệu được trong từng đất nước (hiển thị 10 dất nước cuối cùng) và tổng số
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to B$ với $f$ là hàm lấy ra đất nước từ bản ghi của $A$, $b_{i} \in B$
+		\item $x_{i} = \sum_{1}^{\infty} 1 \forall f(A) = b_{i}$: số lượng dữ liệu thu thập của quốc gia  $b_{i}$
+		\item $x = \sum_{1}^{\infty} x_{i}$: tổng số dữ liệu thu thập
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.4\linewidth]{IMG/i5_iso_observe.png}
+		\vspace*{5mm}
+		\caption{Dữ liệu 10 đất nước cuối cùng trong bản dữ liệu}
+		\label{fig:i5_iso_observe}
+	\end{figure}
+	\item Cho biết các châu lục nào có lượng dữ liệu thu thập nhỏ nhất và giá trị nhỏ nhất đó?
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to B$ với $f$ là hàm lấy ra châu lục từ bản ghi của $A$, $b_{i} \in B$
+		\item $x_{i} = \sum_{1}^{\infty} 1 \forall f(A) = b_{i}$: số lượng dữ liệu thu thập của châu lục  $b_{i}$
+		\item $x_{min} \in \{x_{i} | x_{min} \leq x_{i} \forall x_{i} \in \{x_{i}\}\}$: số lượng dữ liệu thu thập tại 1 châu lục thấp nhất
+		\item $b_{min} \in \{ b_{i} | x_{i} = x_{min}\}$: châu lục có số lượng dữ liệu thu thập thấp nhất
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.4\linewidth]{IMG/i6_min_continent.png}
+		\vspace*{5mm}
+		\caption{Châu lục có dữ liệu nhỏ nhất}
+		\label{fig:i6_min_continent}
+	\end{figure}
+	\clearpage
+	\item Cho biết các châu lục nào có lượng dữ liệu thu thập lớn nhất và giá trị lớn nhất đó?
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to B$ với $f$ là hàm lấy ra châu lục từ bản ghi của $A$, $b_{i} \in B$
+		\item $x_{i} = \sum_{1}^{\infty} 1 \forall f(A) = b_{i}$: số lượng dữ liệu thu thập của châu lục  $b_{i}$
+		\item $x_{max} \in \{x_{i} | x_{max} \leq x_{i} \forall x_{i} \in \{x_{i}\}\}$: số lượng dữ liệu thu thập tại 1 châu lục lớn nhất
+		\item $b_{max} \in \{ b_{i} | x_{i} = x_{max}\}$: châu lục có số lượng dữ liệu thu thập lớn nhất
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.4\linewidth]{IMG/i7_max_continent.png}
+		\vspace*{5mm}
+		\caption{Châu lục có dữ liệu lớn nhất}
+		\label{fig:i7_max_continent}
+	\end{figure}
+	\item Cho biết các nước nào có lượng dữ liệu thu thập nhỏ nhất và giá trị nhỏ nhất đó?
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to B$ với $f$ là hàm lấy ra quốc gia từ bản ghi của $A$, $b_{i} \in B$
+		\item $x_{i} = \sum_{1}^{\infty} 1 \forall f(A) = b_{i}$: số lượng dữ liệu thu thập của quốc gia  $b_{i}$
+		\item $x_{min} \in \{x_{i} | x_{min} \leq x_{i} \forall x_{i} \in \{x_{i}\}\}$: số lượng dữ liệu thu thập tại 1 quốc gia thấp nhất
+		\item $b_{min} \in \{ b_{i} | x_{i} = x_{min}\}$: quốc gia có số lượng dữ liệu thu thập thấp nhất
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.4\linewidth]{IMG/i8_min_country.png}
+		\vspace*{5mm}
+		\caption{Nước có dữ liệu nhỏ nhất}
+		\label{fig:i8_min_country}
+	\end{figure}
+	
+	\item Cho biết các nước nào có lượng dữ liệu thu thập lớn nhất và giá trị lớn nhất đó?
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to B$ với $f$ là hàm lấy ra quốc gia từ bản ghi của $A$, $b_{i} \in B$
+		\item $x_{i} = \sum_{1}^{\infty} 1 \forall f(A) = b_{i}$: số lượng dữ liệu thu thập của quốc gia  $b_{i}$
+		\item $x_{max} \in \{x_{i} | x_{max} \leq x_{i} \forall x_{i} \in \{x_{i}\}\}$: số lượng dữ liệu thu thập tại 1 quốc gia cao nhất
+		\item $b_{max} \in \{ b_{i} | x_{i} = x_{max}\}$: quốc gia có số lượng dữ liệu thu thập cao nhất
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.4\linewidth]{IMG/i9_max_country.png}
+		\vspace*{5mm}
+		\caption{Nước có dữ liệu lớn nhất}
+		\label{fig:i9_max_country}
+	\end{figure}
+	\item Cho biết các date nào có lượng dữ liệu thu thập nhỏ nhất và giá trị nhỏ nhất đó?
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to B$ với $f$ là hàm lấy ra ngày từ bản ghi của $A$, $b_{i} \in B$
+		\item $x_{i} = \sum_{1}^{\infty} 1 \forall f(A) = b_{i}$: số lượng dữ liệu thu thập của ngày $b_{i}$
+		\item $x_{min} \in \{x_{i} | x_{min} \leq x_{i} \forall x_{i} \in \{x_{i}\}\}$: số lượng dữ liệu thu thập tại 1 ngày thấp nhất
+		\item $b_{min} \in \{ b_{i} | x_{i} = x_{min}\}$: ngày có số lượng dữ liệu thu thập thấp nhất
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.4\linewidth]{IMG/i10_min_date.png}
+		\vspace*{5mm}
+		\caption{Ngày có dữ liệu nhỏ nhất}
+		\label{fig:i10_min_date}
+	\end{figure}	
+	\clearpage
+	\item Cho biết các date nào có lượng dữ liệu thu thập lớn nhất và giá trị lớn nhất đó?
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to B$ với $f$ là hàm lấy ra ngày từ bản ghi của $A$, $b_{i} \in B$
+		\item $x_{i} = \sum_{1}^{\infty} 1 \forall f(A) = b_{i}$: số lượng dữ liệu thu thập của ngày $b_{i}$
+		\item $x_{max} \in \{x_{i} | x_{max} \leq x_{i} \forall x_{i} \in \{x_{i}\}\}$: số lượng dữ liệu thu thập tại 1 ngày cao nhất
+		\item $b_{max} \in \{ b_{i} | x_{i} = x_{max}\}$: ngày có số lượng dữ liệu thu thập cao nhất
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.4\linewidth]{IMG/i11_max_date.png}
+		\vspace*{5mm}
+		\caption{Ngày có dữ liệu lớn nhất}
+		\label{fig:i11_max_date}
+	\end{figure}
+	\item Cho biết số lượng dữ liệu thu thập được theo date và châu lục.
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to B$ với $f$ là hàm lấy bộ (date, continent) từ bản ghi, $B = \{(x_{i}, y_{i})\}$
+		\item $z_{i} = \sum_{1}^{\infty} 1 \forall f(A) = (x_{i}, y_{i})$: số lượng dữ liệu thu thập theo date và châu lục
+		\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{IMG/i12.png}
+		\vspace*{5mm}
+		\caption{Dữ liệu thu thập theo ngày và châu lục}
+		\label{fig:i12}
+	\end{figure}	
+	\clearpage
+	\item Cho biết số lượng dữ liệu thu thập được là lớn nhất theo date và châu lục.
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to B$ với $f$ là hàm lấy bộ (date, continent) từ bản ghi, $B = \{(x_{i}, y_{i})\}$
+		\item $z_{i} = \sum_{1}^{\infty} 1 \forall f(A) = (x_{i}, y_{i})$: số lượng dữ liệu thu thập theo date và châu lục
+		\item $z_{max} \in \{z_{i} | z_{max} \leq z_{i} \forall z_{i} \in \{z_{i}\}\}$: số lượng dữ liệu thu thập tại 1 ngày ở 1 châu lục cao nhất
+		\item $(x_{i}, y_{i}) \in \{ (x_{i}, y_{i}) | z_{i} = z_{max}\}$: bộ ngày và châu lục có số lượng dữ liệu thu thập cao nhất
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{IMG/i13.png}
+		\vspace*{5mm}
+		\caption{Dữ liệu lớn nhất thu thập theo ngày và châu lục}
+		\label{fig:i13}
+	\end{figure}
+	\clearpage
+	\item Cho biết số lượng dữ liệu thu thập được là nhỏ nhất theo date và châu lục.
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to B$ với $f$ là hàm lấy bộ (date, continent) từ bản ghi, $B = \{(x_{i}, y_{i})\}$
+		\item $z_{i} = \sum_{1}^{\infty} 1 \forall f(A) = (x_{i}, y_{i})$: số lượng dữ liệu thu thập theo date và châu lục
+		\item $z_{min} \in \{z_{i} | z_{max} \leq z_{i} \forall z_{i} \in \{z_{i}\}\}$: số lượng dữ liệu thu thập tại 1 ngày ở 1 châu lục nhỏ nhất
+		\item $(x_{i}, y_{i}) \in \{ (x_{i}, y_{i}) | z_{i} = z_{min}\}$: bộ ngày và châu lục có số lượng dữ liệu thu thập nhỏ nhất
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{IMG/i14.png}
+		\vspace*{5mm}
+		\caption{Dữ liệu nhỏ nhất thu thập theo ngày và châu lục}
+		\label{fig:i14}
+	\end{figure}
+	\item Với một date là k và châu lục t cho trước, hãy cho biết số lượng dữ liệu thể hiện thu thập dữ liệu được.
+	\begin{itemize}
+		\item $A$ là tập hợp các bản ghi
+		\item $f: A \to B$ với $f$ là hàm lấy bộ (date, continent) từ bản ghi, $B = \{(x_{i}, y_{i})\}$
+		\item $z_{i} = \sum_{1}^{\infty} 1 \forall f(A) = (x_{i}, y_{i})$: số lượng dữ liệu thu thập theo date và châu lục
+		\item $(x_{i}, y_{i}) \in \{ (x_{i}, y_{i}) | (x_{i}, y_{i}) = (k, t) \}$: bộ ngày k và châu lục t
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{IMG/i15.png}				
+		\vspace*{5mm}
+		\caption{Với một date và châu lục cho trước}
+		\label{fig:i15}
+	\end{figure}
+  \item Có đất nước nào mà số lượng dữ liệu thu thập được là bằng nhau không? Hãy cho biết các iso\_code của đất nước đó.
+	\begin{itemize}
+	\item $A$ là tập hợp các bản ghi
+	\item $f: A \to B$ với $f$ là hàm lấy ra quốc gia từ bản ghi của $A$, $b_{i} \in B$
+	\item $x_{i} = \sum_{1}^{\infty} 1 \forall f(A) = b_{i}$: số lượng dữ liệu thu thập của quốc gia $b_{i}$, $B = \{x_{i}\}, z_{j} \in B$
+	\item $y_{j} = \sum_{1}^{\infty} 1 \forall x_{i} = z_{j}$: số lượng quốc gia có cùng số liệu thu thập $z_{j}$
+	\item $C = \{b_{i} | x_{i} = z_{j} \land y_{j} \geq 2 \}$: tập hợp các quốc gia có chung số liệu thu thập
+\end{itemize}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{IMG/i16_isocode_equal.png}
+		\vspace*{5mm}
+		\caption{Các đất nước có số lượng dữ liệu bằng nhau}
+		\label{fig:i16_isocode_equal}
+	\end{figure}
+\clearpage
+\item Liệt kê iso\_code, tên đất nước mà chiều dài iso\_code lớn hơn 3
+\begin{itemize}
+	\item $A$ là tập hợp các bản ghi
+	\item $f: A \to B$ với $f$ là hàm lấy ra bộ (iso\_code, location) từ bản ghi của $A$, $(a_{i},b_{i}) \in B$
+	\item $f1(x)$ là hàm lấy độ dài của chuỗi
+	\item $C = \{(a_{i},b{i}) | f1(a_{i}) > 3\}$: bộ iso\_code, tên đất nước mà chiều dài iso\_code lớn hơn 3
+\end{itemize}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{IMG/i17_isocode_3.png}
+		\vspace*{5mm}
+		\caption{Danh sách đất nước có iso\_code lớn hơn 3}
+		\label{fig:i17_isocode_3}
+	\end{figure}
+\end{enumerate}
+
+	\clearpage
+	\section{Nhóm câu hỏi liên quan đến mô tả thống kê cơ bản dữ liệu}\label{part2}
+
+\begin{enumerate}
+	[1)]
+	%\CAU 1
+	\item Tính giá trị nhỏ nhất, lớn nhất.
+	\begin{itemize}
+		\item Công thức biểu diễn.
+		\begin{itemize}
+			\item Tìm giá trị lớn nhất:  $max_P=max{a_1, a_2, \dotsb, a_n}$
+			\item Tìm giá trị nhỏ nhất:  $min_P=min{a_1, a_2, \dotsb, a_n}$
+			\begin{itemize}
+				\item P = $\{ a_1,a_2,\dotsb,a_n \}$ , là tập đang xét
+				\item $max_P$: giá trị lớn nhất trong tập P
+				\item $min_P$: giá trị nhỏ nhất trong tập P
+				\item n: số lượng phần tử trong tập cần tìm
+				\item $a_1, a_2, \dotsb ,a_n$: giá trị phần tử thứ $1, 2,\dotsb n$ trong tập.
+			\end{itemize}
+		\end{itemize}
+		\item Sử dụng hàm max(), min() để lấy giá trị lớn nhất, nhỏ nhất cho 2 giá trị new\_cases và new\_deaths.
+		\item Đưa ra kết quả.
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/ii/1.png}
+			\vspace*{5mm}
+			\caption{Kết quả max, min của new\_cases và new\_deaths}
+			\label{fig:2.2.1}
+		\end{figure}
+	\end{itemize}
+	
+	%\CAU 2
+	\clearpage
+	\item Tính tứ phân vị thứ nhất(Q1), thứ hai(Q2), thứ ba(Q3)
+	\begin{itemize}
+		\item Tứ phân vị là đại lượng mô tả sự phân bố và sự phân tán của tập dữ liệu. Tứ phân vị có 3 giá trị, đó là tứ phân vị thứ nhất, thứ nhì, và thứ ba.
+		\item Ba giá trị này chia một tập hợp dữ liệu (đã sắp xếp dữ liệu theo trật từ từ bé đến lớn) thành 4 phần có số lượng quan sát đều nhau.
+		\item Giá trị tứ phân vị thứ hai Q2 chính bằng giá trị trung vị.
+		\item Giá trị tứ phân vị thứ nhất Q1 bằng trung vị phần dưới.
+		\item Giá trị tứ phân vị thứ ba Q3 bằng trung vị phần trên.
+		\item Ví dụ: Tập dữ liệu bao gồm {1,2,5,6,7,8,12,13,14,15,200}.
+		\item Tập dữ liệu trên đã được sắp xếp theo thứ tự tăng dần, dễ dàng nhận thấy giá trị trung vị nằm giữa chính là 14.
+		\item Trung vị của tập dữ liệu phần dưới {1,2,5} là 7.
+		\item Và trung vị của tập dữ liệu phần trên {14,15,200} là 34.
+		\item Vậy Q1 = 5, Q2 = 8, Q3 = 14
+		\newline
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/ii/2des}
+			\vspace*{5mm}
+			\caption{Hình minh hoạ Tứ Phân Vị}
+			\label{fig:2.2.2.1}
+		\end{figure}
+		\item Sử dụng hàm quantile() để lấy tứ phân vị.
+		\item Đưa ra kết quả.
+		\item Source code và kết quả đạt được là
+		\newline
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/ii/2}
+			\vspace*{5mm}
+			\caption{Kết quả tứ phân vị của new\_cases và new\_deaths}
+			\label{fig:2.2.2.2}
+		\end{figure}
+	\end{itemize}
+	
+	%\CAU 3
+	\clearpage
+	\item Tính giá trị trung bình (Avg)
+	\begin{itemize}
+		\item Công thức biểu diễn:
+		$\bar{x}=\cfrac{1}{n}\sum_{i=1}^{n} x_i=\cfrac{1}{n}\{x_1 + \dotsb + x_n\}$
+		\item Sử dụng hàm mean(), để lấy giá trị trung bình.
+		\item Đưa ra kết quả.
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/ii/3}
+			\vspace*{5mm}
+			\caption{Kết quả giá trị trung bình (Avg) của new\_cases và new\_deaths}
+			\label{fig:2.2.3}
+		\end{figure}
+	\end{itemize}
+	
+	%\CAU 4
+
+	\item Tính giá trị độ lệch chuẩn (Std)
+	\begin{itemize}
+		\item Công thức tính độ lệch chuẩn:
+		$s=\sqrt{\cfrac{1}{n}\sum_{i=1}^{n} (x_i - \bar{x})^2}$
+		\begin{itemize}
+				\item $N, n$ là số phần tử có trong tập hợp/mẫu
+				\item $x_i$ là phần tử thứ i của quần thể/mẫu
+				\item $\bar{x}$ là giá trị trung bình của tập
+		\end{itemize}
+		\item Sử dụng hàm var(), để lấy độ lệch chuẩn.
+		\item Đưa ra kết quả
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/ii/4}
+			\vspace*{5mm}
+			\caption{Kết quả tính độ lệch chuẩn của new\_cases và new\_deaths}
+			\label{fig:2.2.4}
+		\end{figure}
+	\end{itemize}
+	
+	%\CAU 5
+	\clearpage
+	\item Đếm xem có bao nhiêu outliers, một quan sát mà giá trị của nó nằm trong khoảng sau:\\
+	$IQR = Q3 - Q1$\\
+	$outliers < Q1 - 1.5*IQR$ hoặc $outliers > Q3 + 1.5*IQR$
+	\begin{itemize}
+		\item Với $IQR = Q3 - Q1$. Lọc các dòng dữ liệu với giá trị cột $new\_deaths\/ new\_cases$ thoả điều kiện $Q1 - 1.5 * IQR $ hoặc $outliers > Q3 + 1.5 * IQR$
+		\item Sau đó dùng hàm nrow() để đếm số lượng record
+		\item Đưa ra kết quả.
+		\item Source code và kết quả đạt được là:
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/ii/5}
+			\vspace*{5mm}
+			\caption{Số ca tử vong theo từng quốc gia của tháng 8}
+			\label{fig:2.2.5.5}
+		\end{figure}
+	\end{itemize}
+	
+	%\CAU 6
+
+	\item Lập bảng mô tả số liệu thống kê cho từng đất nước thuộc về nhóm \\
+	\begin{itemize}
+		\item Sử dụng hàm max(), min(), quantile() để tính toán thông số.
+		\item Đưa ra kết quả.
+		\item Source code và kết quả đạt được là:
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/ii/6_new_cases}
+			\vspace*{5mm}
+			\caption{Câu 6: ket qua cho so truong hợp nhiễm mới (new\_cases).}
+			\label{fig:2.6.2}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/ii/6_new_cases}
+			\vspace*{5mm}
+			\caption{Câu 6: ket qua cho so truong hợp tử vong (new\_deaths).}
+			\label{fig:2.6.1}
+		\end{figure}
+	\end{itemize}
+	
+	%\CAU 7
+	\clearpage
+	\item Vẽ biểu đồ boxplot hay còn được gọi là box-and-whisker cho nhiễm coronavirus
+	\begin{itemize}
+		\item Code: tham khảo file R.
+		\item Đưa ra kết quả.
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/ii/7}
+			\vspace*{5mm}
+			\caption{Câu 7: biểu đồ boxplot hay còn được gọi là box-and-whisker cho nhiễm coronavirus.}
+			\label{fig:2.2.5.7.1}
+		\end{figure}
+	\end{itemize}
+\end{enumerate}
+	
+	\clearpage\section{Nhóm câu hỏi liên quan đến dữ liệu thể hiện thu thập dữ liệu}\label{part3}
+	\begin{enumerate}[1)]
+		\item Có bao nhiêu ngày có số lần dữ liệu không được báo cáo mới.
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.4\linewidth]{IMG/iii1_1_new case_not update.png}	
+			\vspace*{5mm}
+			\caption{Số ngày new case không được báo cáo mới}
+			\label{fig:iii1_1_new case_not update}
+		\end{figure}
+		
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.4\linewidth]{IMG/iii1_2_new death_not 	update.png}	
+			\vspace*{5mm}
+			\caption{Số ngày new death không được báo cáo mới}
+			\label{fig:iii1_2_new death_not update}
+		\end{figure}
+		\item Có bao nhiêu ngày có số ca nhiễm/ tử vong là thấp nhất được báo cáo mới.
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/iii2_1_case_min_update.png}
+			\vspace*{5mm}
+			\caption{Số ngày new case có số lần thu thập dữ liệu thấp nhất được báo cáo mới}
+			\label{fig:iii2_1_case_min_update}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/iii2_2_death_min_update.png}
+			\vspace*{5mm}
+			\caption{ Số ngày new death có số lần thu thập dữ liệu thấp nhất được báo cáo mới}
+			\label{fig:iii2_2_death_min_update}
+		\end{figure}
+		\clearpage
+		\item Có bao nhiêu ngày có số ca nhiễm/ tử vong là cao nhất được báo cáo mới
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/iii3_1_case_max_update.png}
+			\vspace*{5mm}
+			\caption{Số ngày new case có số lần thu thập dữ liệu cao nhất được báo cáo mới}
+			\label{fig:iii3_1_case_max_update}
+		\end{figure}
+		
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/iii3_2_death_max_update.png}
+			\vspace*{5mm}
+			\caption{Số ngày new death có số lần thu thập dữ liệu cao nhất được báo cáo mới}
+			\label{fig:iii3_2_death_max_update}
+		\end{figure}		
+
+		\item Thể hiện bảng số liệu như sau không được báo cáo mới và báo cáo mới
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/iii4_1_format_not update.png}
+			\vspace*{5mm}
+			\caption{Số ngày new case và new death không được báo cáo mới}
+			\label{fig:iii4_1_format_not update}
+		\end{figure}
+		
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/iii4_2_format_update.png}
+			\vspace*{5mm}
+			\caption{Số dữ liệu max min new case được báo cáo mới}
+			\label{fig:iii4_2_format_update}
+		\end{figure}
+		
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/iii4_3_format_death update.png}
+			\vspace*{5mm}
+			\caption{Số dữ liệu max min new death được báo cáo mới}
+			\label{fig:iii4_3_format_death update}
+		\end{figure}
+		\clearpage
+		%cau 5
+		\item Cho biết số ngày ngắn nhất liên tiếp mà không có dữ liệu được báo cáo
+		\begin{itemize}
+			\item Giải pháp: duyệt từ row đầu tiên đến row cuối cùng, đếm chuỗi các chuỗi ngày mà “liên tiếp mà không có dữ liệu được báo cáo”, sinh ra 1 table, tìm max/min từ table đó.
+			\item Code: tham khảo trong file R.
+			\item Đưa ra kết quả.
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.7\linewidth]{IMG/iii/5.png}
+				\vspace*{5mm}
+				\caption{Câu 6: ket qua cho số ngày ngắn nhất liên tiếp mà không có dữ liệu được báo cáo.}
+				\label{fig:iii.5}
+			\end{figure}
+		\end{itemize}
+		%cau 6
+		\item Cho biết số ngày dài nhất liên tiếp mà không có dữ liệu được báo cáo
+		\begin{itemize}
+			\item Dùng chung ý tưởng, và function với câu 5.
+			\item Đưa ra kết quả.
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.7\linewidth]{IMG/iii/6.png}
+				\vspace*{5mm}
+				\caption{Kết quả cho cho số ngày ngắn nhất liên tiếp mà không có dữ liệu được báo cáo.}
+				\label{fig:iii.6}
+			\end{figure}
+		\end{itemize}
+		
+		%cau 7
+		\item Cho biết số ngày ngắn nhất liên tiếp mà không có người nhiễm bệnh mới
+		\begin{itemize}
+			\item Giải pháp: duyệt từ row đầu tiên đến row cuối cùng, đếm chuỗi các chuỗi ngày mà “liên tiếp mà không có người nhiễm bệnh mới”, sinh ra 1 table, tìm max/min từ table đó.
+			\item Code: tham khảo trong file R.
+			\item Đưa ra kết quả.
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.7\linewidth]{IMG/iii/7.png}
+				\vspace*{5mm}
+				\caption{Kết quả cho số ngày ngắn nhất liên tiếp mà không có người nhiễm bệnh mới.}
+				\label{fig:iii.7}
+			\end{figure}
+		\end{itemize}
+		
+		%cau 8
+		\item Cho biết số ngày dài nhất liên tiếp mà không có người nhiễm bệnh mới
+		\begin{itemize}
+			\item Dùng chung ý tưởng, và function với câu 7.
+			\item Đưa ra kết quả.
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.7\linewidth]{IMG/iii/8.png}
+				\vspace*{5mm}
+				\caption{Kết quả cho số ngày dài nhất liên tiếp mà không có người nhiễm bệnh mới.}
+				\label{fig:iii.8}
+			\end{figure}
+		\end{itemize}
+	\end{enumerate}
+\clearpage
+\section{Nhóm câu hỏi liên quan đến trực quan dữ liệu}\label{part4}
+\begin{enumerate}[1]
+	\item Vẽ biểu đồ tần số tích lũy quốc gia cho các châu lục
+	\begin{itemize}
+		\item Cách giải.
+		\newline
+		\begin{itemize}
+			\item Bước 1: Group by $location$ và $continent$, ta sẽ đếm được so quoc gia. Sau đó lưu kết quả.
+			\item Bước 2: Từ kết quả đạt được, group by $continent$ sẽ đếm. Sẽ ra được số lượng quốc gia theo từng châu lục.
+			\item Bước 3: Dùng hàm $stat\_ecdf$(empirical cumulative distribution function), để tính tần số tích luỹ.
+			\item Bước 4: Sau đó từ kết quả thu dược dùng ggplot, để vẽ biểu đồ tần số tích tuỹ quốc gia theo châu lục.
+		\end{itemize}
+		\item Code: tham khảo file R.
+		\item Đưa ra kết quả.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/iv/1.cpuntry_count}
+			\vspace*{5mm}
+			\caption{Câu 6: ket qua cho so truong hợp nhiễm mới (new\_cases).}
+			\label{fig:4.1}
+		\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/iv/1}
+			\vspace*{5mm}
+			\caption{Câu 6: ket qua cho so truong hợp nhiễm mới (new\_cases).}
+			\label{fig:4.2}
+		\end{figure}
+	\end{itemize}
+	\clearpage
+	
+	\item Vẽ biểu đồ tần số tương đối quốc gia cho các châu lục
+	\begin{itemize}
+		\item Cách giải tương tự câu 1, tuy nhiên có thêm bước $2,5$, chia $số lượng quốc gia theo châu lục$ cho $tổng tất cả quốc gia$
+		\newline
+		\begin{itemize}
+			\item Bước 1: Group by $location$ và $continent$, ta sẽ đếm được so quoc gia. Sau đó lưu kết quả.
+			\item Bước 2: Từ kết quả đạt được, group by $continent$ sẽ đếm. Sẽ ra được số lượng quốc gia theo từng châu lục.
+			\item Bước $2,5$: chia $số lượng quốc gia theo châu lục$ cho $tổng tất cả quốc gia$
+			\item Bước 3: Dùng hàm $stat\_ecdf$(empirical cumulative distribution function), để tính tần số tích luỹ.
+			\item Bước 4: Sau đó từ kết quả thu dược dùng ggplot, để vẽ biểu đồ tần số tích tuỹ quốc gia theo châu lục.
+		\end{itemize}
+		\item Code: tham khảo file R.
+		\item Đưa ra kết quả.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/iv/2}
+			\vspace*{5mm}
+			\caption{Câu 6: ket qua cho so truong hợp nhiễm mới (new\_cases).}
+			\label{fig:4.2.1}
+		\end{figure}
+	\end{itemize}
+	\pagebreak
+	\item Vẽ biểu đồ thể hiện nhiễm bệnh đã báo cáo của các quốc gia mà thuộc về nhóm trong 7 ngày cuối của năm cuối cùng
+	\begin{itemize}
+		\item Cách giải.
+		\newline
+		\begin{itemize}
+			\item Bước 1: tính ngày cuối cùng.
+			\item Bước 2: lấy ngày cuối cùng trừ đi 7.
+			\item Bước 3: khởi tạo data, filter N/A cho field $new_cases$
+			\item Bước 4: filter data có ngày > ngày vừa tìm được ở bước 2, và in kết quả.
+		\end{itemize}
+		\item Code: tham khảo file R.
+		\item Đưa ra kết quả.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/iv/3}
+			\vspace*{5mm}
+			\caption{Câu 6: ket qua cho so truong hợp nhiễm mới (new\_cases).}
+			\label{fig:4.3.1}
+		\end{figure}
+	\end{itemize}
+	
+	\clearpage
+	\item Vẽ biểu đồ thể hiện tử vong đã báo cáo của các quốc gia mà thuộc về nhóm trong 7 ngày cuối của năm cuối cùng
+	\begin{itemize}
+		\item Cách giải.
+		\newline
+		\begin{itemize}
+			\item Bước 1: tính ngày cuối cùng.
+			\item Bước 2: lấy ngày cuối cùng trừ đi 7.
+			\item Bước 3: khởi tạo data, filter N/A cho field $new_deaths$
+			\item Bước 4: filter data có ngày > ngày vừa tìm được ở bước 2, và in kết quả.
+		\end{itemize}
+		\item Code: tham khảo file R.
+		\item Đưa ra kết quả.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/iv/4}
+			\vspace*{5mm}
+			\caption{Câu 6: ket qua cho so truong hợp nhiễm mới (new\_cases).}
+			\label{fig:4.4.1}
+		\end{figure}
+	\end{itemize}
+	
+	\pagebreak
+	\item Vẽ biểu đồ phổ đất nước xuất hiện outliers cho nhiễm bệnh
+	\begin{itemize}
+		\item Cách giải.
+		\newline
+		\begin{itemize}
+			\item Bước 1: tính ngày cuối cùng.
+			\item Bước 2: lấy ngày cuối cùng trừ đi 7.
+			\item Bước 3: khởi tạo data, tính điều kiện dùng để lọc outliers. (đã để cập ở phần $ii5$)\\
+				$IQR = Q3 - Q1$\\
+				$outliers < Q1 - 1.5*IQR$ hoặc $outliers > Q3 + 1.5*IQR$
+			\item Bước 4: filter data thoả $new\_cases < Q1 - 1.5*IQR$ hoặc $new\_cases > Q3 + 1.5*IQR$.
+		\end{itemize}
+		\item Code: tham khảo file R.
+		\item Đưa ra kết quả.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/iv/5}
+			\vspace*{5mm}
+			\caption{Câu 6: ket qua cho so truong hợp nhiễm mới (new\_cases).}
+			\label{fig:4.5.1}
+		\end{figure}
+	\end{itemize}
+	
+	\clearpage
+	\item Vẽ biểu đồ phổ đất nước xuất hiện outliers cho tử vong
+	\begin{itemize}
+		\item Cách giải.
+		\newline
+		\begin{itemize}
+			\item Bước 1: tính ngày cuối cùng.
+			\item Bước 2: lấy ngày cuối cùng trừ đi 7.
+			\item Bước 3: khởi tạo data, tính điều kiện dùng để lọc outliers. (đã để cập ở phần $ii5$)\\
+				$IQR = Q3 - Q1$\\
+				$outliers < Q1 - 1.5*IQR$ hoặc $outliers > Q3 + 1.5*IQR$
+			\item Bước 4: filter data thoả $new\_deaths < Q1 - 1.5*IQR$ hoặc $new\_deaths > Q3 + 1.5*IQR$.
+		\end{itemize}
+		\item Code: tham khảo file R.
+		\item Đưa ra kết quả.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/iv/6}
+			\vspace*{5mm}
+			\caption{Câu 6: ket qua cho so truong hợp nhiễm mới (new\_cases).}
+			\label{fig:4.6.1}
+		\end{figure}
+	\end{itemize}
+\end{enumerate}
+
+\clearpage\section{Nhóm câu hỏi liên quan đến trực quan dữ liệu theo thời gian là tháng}\label{part5} 
+\textbf{Cách giải chung}
+\begin{itemize}
+	\item $A = \{d_{i}\}$: tập hợp dữ liệu của tất cả các quốc gia
+	\item $P = \{Kenya, Lesotho , Morocco\}$: tập hợp các quốc gia cần thống kê
+	\item $M = \{1, 8, 4, 5\}$: các cần tháng thống kê
+	\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+\end{itemize}
+
+\begin{enumerate}[1]
+	\item Biểu đồ thể hiện thu thập dữ liệu nhiễm bệnh cho từng tháng
+	\begin{itemize}
+		\item Thêm cột tháng và năm, định dạng cột đó thành dạng number. 
+		\item Tạo 1 vector ngày cần xử lý là 1-8-4-5. 
+		\item Vẽ biểu đồ thu thập số ca nhiễm theo từng quốc gia của mỗi tháng
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.6\linewidth]{IMG/v1_data1.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập ca nhiễm của cả ba quốc gia trong 4 tháng 1-8-5-4}
+		\label{fig:v1_data1}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.6\linewidth]{IMG/v1_data2.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập ca nhiễm của cả ba quốc gia trong 4 tháng 1-8-5-4}
+		\label{fig:v1_data2}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.6\linewidth]{IMG/v1_data3.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập ca nhiễm của cả ba quốc gia trong 4 tháng 1-8-5-4}
+		\label{fig:v1_data3}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.6\linewidth]{IMG/v1_data4.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập ca nhiễm của cả ba quốc gia trong 4 tháng 1-8-5-4}
+		\label{fig:v1_data4}
+	\end{figure}	
+	\clearpage
+	\item Biểu đồ thể hiện thu thập dữ liệu tử vong cho từng tháng
+	\begin{itemize}
+		\item Thêm cột tháng và năm, định dạng cột đó thành dạng number. 
+		\item Tạo 1 vector ngày cần xử lý là 1-8-4-5. 
+		\item Vẽ biểu đồ thu thập số ca tử vong theo từng quốc gia của mỗi tháng
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v2_data1.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập ca tử vong của cả ba quốc gia trong 4 tháng 1-8-5-4.}
+		\label{fig:v2_data1}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v2_data2.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập ca tử vong của cả ba quốc gia trong 4 tháng 1-8-5-4.}
+		\label{fig:v2_data2}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v2_data3.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập ca tử vong của cả ba quốc gia trong 4 tháng 1-8-5-4.}
+		\label{fig:v2_data3}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v2_data4.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập ca tử vong của cả ba quốc gia trong 4 tháng 1-8-5-4.}
+		\label{fig:v2_data4}
+	\end{figure}	
+	\clearpage
+	\item Biểu đồ thể hiện thu thập dữ liệu gồm nhiễm bệnh và tử vong cho từng tháng
+	\begin{itemize}
+		\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+		\item $y_{i}$: số ca tử vong của ngày $d_{i}$
+		\item $a_{j} = x_{ij} \forall i \in M | j\in P$: dữ liệu nhiễm bệnh mỗi tháng của từng quốc gia .
+		\item $a_{j} = x_{ij}  \forall i \in M | j\in P$: dữ liệu tử vong mỗi của 3 từng gia .
+	\end{itemize}
+	
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v3_data1.png}
+		\vspace*{5mm}
+		\caption{ữ liệu thu thập ca nhiễm và tử vong từng tháng}
+		\label{fig:v3_data1}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v3_data2.png}
+		\vspace*{5mm}
+		\caption{ữ liệu thu thập ca nhiễm và tử vong từng tháng}
+		\label{fig:v3_data2}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v3_data3.png}
+		\vspace*{5mm}
+		\caption{ữ liệu thu thập ca nhiễm và tử vong từng tháng}
+		\label{fig:v3_data3}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v3_data4.png}
+		\vspace*{5mm}
+		\caption{ữ liệu thu thập ca nhiễm và tử vong từng tháng}
+		\label{fig:v3_data4}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v3_data5.png}
+		\vspace*{5mm}
+		\caption{ữ liệu thu thập ca nhiễm và tử vong từng tháng}
+		\label{fig:v3_data5}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v3_data6.png}
+		\vspace*{5mm}
+		\caption{ữ liệu thu thập ca nhiễm và tử vong từng tháng}
+		\label{fig:v3_data6}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v3_data7.png}
+		\vspace*{5mm}
+		\caption{ữ liệu thu thập ca nhiễm và tử vong từng tháng}
+		\label{fig:v3_data7}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v3_data8.png}
+		\vspace*{5mm}
+		\caption{ữ liệu thu thập ca nhiễm và tử vong từng tháng}
+		\label{fig:v3_data8}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v3_data9.png}
+		\vspace*{5mm}
+		\caption{ữ liệu thu thập ca nhiễm và tử vong từng tháng}
+		\label{fig:v3_data9}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v3_data10.png}
+		\vspace*{5mm}
+		\caption{ữ liệu thu thập ca nhiễm và tử vong từng tháng}
+		\label{fig:v3_data10}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v3_data11.png}
+		\vspace*{5mm}
+		\caption{ữ liệu thu thập ca nhiễm và tử vong từng tháng}
+		\label{fig:v3_data11}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v3_data12.png}
+		\vspace*{5mm}
+		\caption{ữ liệu thu thập ca nhiễm và tử vong từng tháng}
+		\label{fig:v3_data12}
+	\end{figure}
+	\clearpage
+	\item Biểu đồ thể hiện thu thập dữ liệu nhiễm bệnh gồm 2 tháng cuối của năm
+	\begin{itemize}
+		\item $M = \{11,12\}$: các tháng thống kê
+		\item $x_{i}$: số ca tử vong của ngày $d_{i}$
+		\item $a_{j} = x_{i}  \forall i = M$: dữ liệu nhiễm bệnh theo 2 tháng cuôi năm của 3 quốc gia.
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v4_data1.png}
+		\vspace*{5mm}
+		\caption{Dữ liệu thu thập ca nhiễm bệnh 2 tháng cuối năm}
+		\label{fig:v4_data1}
+	\end{figure}
+
+	\item Biểu đồ thể hiện thu thập dữ liệu tử vong gồm 2 tháng cuối của năm
+	\begin{itemize}
+		\item $M = \{11,12\}$: các tháng thống kê
+		\item $x_{i}$: số ca tử vong của ngày $d_{i}$
+		\item $b_{j} = x_{i}  \forall i = M$: dữ liệu tử vong theo 2 tháng cuôi năm của 3 quốc gia.
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v5_data1.png}
+		\vspace*{5mm}
+		\caption{Dữ liệu thu thập ca tử vong 2 tháng cuối năm}
+		\label{fig:v5_data1}
+	\end{figure}
+	\clearpage
+	\item Biểu đồ thể hiện thu thập dữ liệu gồm nhiễm bệnh và tử vong gồm 2 tháng cuối của năm
+	\begin{itemize}
+		\item $M = \{11,12\}$: các tháng thống kê
+		\item $x_{i}, y_{i}$: số ca nhiễm bệnh, tử vong của ngày $d_{i}$
+		\item $a_{j} = x_{ij} \forall i = M | j\in P$: dữ liệu nhiễm bệnh mỗi tháng của từng quốc gia .
+		\item $a_{j} = x_{ij}  \forall i = M | j\in P$: dữ liệu tử vong mỗi của 3 từng gia .
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{IMG/v6_kenya2.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ ca nhiễm bệnh và tử vong 2 tháng cuối năm}
+		\label{fig:v6_kenya2}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{IMG/v6_lesotho2.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ ca nhiễm bệnh và tử vong 2 tháng cuối năm}
+		\label{fig:v6_lesotho2}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{IMG/v6_morocco2.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ ca nhiễm bệnh và tử vong 2 tháng cuối năm}
+		\label{fig:v6_morocco2}
+	\end{figure}
+	\clearpage
+	\item Biểu đồ thể hiện thu thập dữ liệu nhiễm bệnh tích lũy cho từng tháng
+	\begin{itemize}
+		\item Tìm dữ liệu nhiễm bệnh tích lũy cho từng tháng
+		$$
+		\begin{array}{rcl}
+			A  =  \frac{\sum\limits_{i=1}^{n}ai*i}{\sum\limits_{i=1}^{n}n}\\
+			
+		\end{array}
+		$$
+		\item A:giá trị tích lũy của dữ liệu
+		\item i: ngày thứ i của tháng
+		\item ai: dữ liệu ca nhiễm thu thập được của ngày thứ i 
+		\item n: tổng số ca nhiễm trong tháng
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{IMG/v7_jan.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập dữ liểu ca nhiễm tích lũy trong mỗi tháng của 3 quốc gia}
+		\label{fig:v7_jan}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{IMG/v7_aug.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập dữ liểu ca nhiễm tích lũy trong mỗi tháng của 3 quốc gia}
+		\label{fig:v7_aug}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{IMG/v7_apr.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập dữ liểu ca nhiễm tích lũy trong mỗi tháng của 3 quốc gia}
+		\label{fig:v7_apr}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.7\linewidth]{IMG/v7_may.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập dữ liểu ca nhiễm tích lũy trong mỗi tháng của 3 quốc gia}
+		\label{fig:v7_may}
+	\end{figure}
+	\clearpage		
+	\item Biểu đồ thu thập tử vong tích lũy cho từng tháng
+	\begin{itemize}
+		\item Tìm dữ liệu nhiễm bệnh tích lũy cho từng tháng
+		$$
+		\begin{array}{rcl}
+			A  =  \frac{\sum\limits_{i=1}^{n}ai*i}{\sum\limits_{i=1}^{n}n}\\
+			
+		\end{array}
+		$$
+		\item A:giá trị tích lũy của dữ liệu
+		\item i: ngày thứ i của tháng
+		\item ai: dữ liệu ca nhiễm thu thập được của ngày thứ i 
+		\item n: tổng số ca tử vong trong tháng
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v8_jan.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập dữ liểu ca tử vong tích lũy trong mỗi tháng của 3 quốc gia}
+		\label{fig:v8_jan}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v8_aug.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập dữ liểu ca tử vong tích lũy trong mỗi tháng của 3 quốc gia}
+		\label{fig:v8_aug}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v8_apr.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập dữ liểu ca tử vong tích lũy trong mỗi tháng của 3 quốc gia}
+		\label{fig:v8_apr}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.75\linewidth]{IMG/v8_may.png}
+		\vspace*{5mm}
+		\caption{Biểu đồ thu thập dữ liểu ca tử vong tích lũy trong mỗi tháng của 3 quốc gia}
+		\label{fig:v8_may}
+	\end{figure}
+	\end{enumerate}
+	\clearpage\section{Nhóm câu hỏi liên quan đến trực quan dữ liệu theo trung bình 7 ngày gần nhất}\label{part6} 
+	\textbf{Cách giải chung}
+	\begin{itemize}
+		\item $A = \{d_{i}\}$: tập hợp dữ liệu của tất cả các quốc gia
+		\item $P = \{Kenya, Lesotho , Morocco\}$: tập hợp các quốc gia cần thống kê
+		\item $M = \{1, 8, 4, 5\}$: các cần tháng thống kê
+		\item $x_{i}$: số ca nhiễm bệnh/tử vong của ngày $d_{i}$
+		\item $avg =\frac{\sum\limits_{i=1}^{7}xi}{7}$: số ca nhiễm bệnh/tử vong trung bình trong 7 ngày gần nhất
+	\end{itemize}
+	
+	\begin{enumerate}[1]
+		
+		\item Biểu đồ thể hiện thu thập dữ liệu nhiễm bệnh cho từng tháng
+		\begin{itemize}
+			\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+			\item $a_{j} = x_{i}  \forall i \in M$: dữ liệu nhiễm bệnh mỗi tháng của 3 quốc gia.
+			\item $a_{i} = avg$ : Thay thế những báo cáo không thường xuyên bằng giá trị trung bình của 7 ngày gần nhất.
+			\item \textcolor{red}{Vì các số liệu ở các tháng 1-4-5-8/2021 đã được cập nhật liên tục nên biểu đồ sẽ tương tự với câu v.2.}
+		\end{itemize}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/vi1_apr_2020.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập ca nhiễm của cả ba quốc gia trong 4 tháng 1-8-5-4}
+			\label{fig:vi1_apr_2020}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/vi1_aug_2020.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập ca nhiễm của cả ba quốc gia trong 4 tháng 1-8-5-4}
+			\label{fig:vi1_aug_2020}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/vi1_may_2020.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập ca nhiễm của cả ba quốc gia trong 4 tháng 1-8-5-4}
+			\label{fig:vi1_may_2020}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/vi1_jan_2022.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập ca nhiễm của cả ba quốc gia trong 4 tháng 1-8-5-4}
+			\label{fig:vi1_jan_2022}
+		\end{figure}
+		\clearpage
+		\item Biểu đồ thể hiện thu thập dữ liệu tử vong cho từng tháng
+		\begin{itemize}
+			\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+			\item $a_{j} = x_{i}  \forall i \in M$: dữ liệu tử vong mỗi tháng của 3 quốc gia.
+			\item $a_{i} = avg$ : Thay thế những báo cáo không thường xuyên bằng giá trị trung bình của 7 ngày gần nhất.
+			\item \textcolor{red}{Vì các số liệu ở các tháng 1-4-5-8/2021 đã được cập nhật liên tục nên biểu đồ sẽ tương tự với câu v.3.}
+		\end{itemize}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/vi2_apr_2020.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập ca tử vong của cả ba quốc gia trong 4 tháng 1-8-5-4}
+			\label{fig:vi2_apr_2020}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/vi2_may_2020.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập ca tử vong của cả ba quốc gia trong 4 tháng 1-8-5-4}
+			\label{fig:vi2_may_2020}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/vi2_jan_2022.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập ca tử vong của cả ba quốc gia trong 4 tháng 1-8-5-4}
+			\label{fig:vi2_jan_2022}
+		\end{figure}
+		\clearpage
+		\item Biểu đồ thể hiện thu thập dữ liệu gồm nhiễm bệnh và tử vong cho từng tháng
+		\begin{itemize}
+			\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+			\item $y_{i}$: số ca tử vong của ngày $d_{i}$
+			\item $a_{j} = x_{ij} \forall i \in M | j\in P$: dữ liệu nhiễm bệnh mỗi tháng của từng quốc gia .
+			\item $a_{j} = x_{ij}  \forall i \in M | j\in P$: dữ liệu tử vong mỗi của 3 từng gia .
+			\item $a_{i}/b_{i} = avg$ : Thay thế những báo cáo không thường xuyên bằng giá trị trung bình của 7 ngày gần nhất.
+		\end{itemize}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/vi3_ken_may.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ dữ liệu thu thập ca nhiễm tử vong của từng quốc gia theo từng tháng theo trung bình 7 ngày gần nhất}
+			\label{fig:vi3_ken_may}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/vi3_ken_aug.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ dữ liệu thu thập ca nhiễm tử vong của từng quốc gia theo từng tháng theo trung bình 7 ngày gần nhất}
+			\label{fig:vi3_ken_aug}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/vi3_les_may.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ dữ liệu thu thập ca nhiễm tử vong của từng quốc gia theo từng tháng theo trung bình 7 ngày gần nhất}
+			\label{fig:vi3_les_may}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/vi3_les_aug.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ dữ liệu thu thập ca nhiễm tử vong của từng quốc gia theo từng tháng theo trung bình 7 ngày gần nhất}
+			\label{fig:vi3_les_aug}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/vi3_moc_apr.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ dữ liệu thu thập ca nhiễm tử vong của từng quốc gia theo từng tháng theo trung bình 7 ngày gần nhất}
+			\label{fig:vi3_moc_apr}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/vi3_moc_may.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ dữ liệu thu thập ca nhiễm tử vong của từng quốc gia theo từng tháng theo trung bình 7 ngày gần nhất}
+			\label{fig:vi3_moc_may}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/vi3_moc_aug.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ dữ liệu thu thập ca nhiễm tử vong của từng quốc gia theo từng tháng theo trung bình 7 ngày gần nhất}
+			\label{fig:vi3_moc_aug}
+		\end{figure}
+		\clearpage
+		\item Biểu đồ thể hiện thu thập dữ liệu nhiễm bệnh gồm 2 tháng cuối của năm
+		\begin{itemize}
+			\item $M = \{11,12\}$: các tháng thống kê
+			\item $x_{i}$: số ca tử vong của ngày $d_{i}$
+			\item $a_{j} = x_{i}  \forall i = M$: dữ liệu nhiễm bệnh theo 2 tháng cuôi năm của 3 quốc gia.
+			\item $a_{i} = avg$ : Thay thế những báo cáo không thường xuyên bằng giá trị trung bình của 7 ngày gần nhất.
+			\item \textcolor{red}{Vì các số liệu ở các tháng 1-4-5-8/2021 đã được cập nhật liên tục nên biểu đồ sẽ tương tự với câu v.4.}
+		\end{itemize}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/vi4_2020.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu thu thập ca nhiễm bệnh 2 tháng cuối năm}
+			\label{fig:vi4_2020}
+		\end{figure}
+		
+		\item Biểu đồ thể hiện thu thập dữ liệu tử vong gồm 2 tháng cuối của năm
+		\begin{itemize}
+			\item $M = \{11,12\}$: các tháng thống kê
+			\item $x_{i}$: số ca tử vong của ngày $d_{i}$
+			\item $b_{j} = x_{i}  \forall i = M$: dữ liệu tử vong theo 2 tháng cuôi năm của 3 quốc gia.
+			\item $b_{i} = avg$ : Thay thế những báo cáo không thường xuyên bằng giá trị trung bình của 7 ngày gần nhất.
+			\item \textcolor{red}{Vì các số liệu ở các tháng 1-4-5-8/2021 đã được cập nhật liên tục nên biểu đồ sẽ tương tự với câu v.5.}
+		\end{itemize}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/vi5_2020.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu thu thập ca tử vong 2 tháng cuối năm}
+			\label{fig:vi5_2020}
+		\end{figure}
+		\clearpage
+		
+		\item Biểu đồ thể hiện thu thập dữ liệu gồm nhiễm bệnh và tử vong gồm 2 tháng cuối của năm
+		\begin{itemize}
+			\item $M = \{11,12\}$: các tháng thống kê
+			\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+			\item $y_{i}$: số ca tử vong của ngày $d_{i}$
+			\item $a_{j} = x_{ij} \forall i = M | j\in P$: dữ liệu nhiễm bệnh mỗi tháng của từng quốc gia .
+			\item $b_{j} = y_{ij}  \forall i = M | j\in P$: dữ liệu tử vong mỗi của 3 từng gia .
+			\item \textcolor{red}{Vì các số liệu ở các tháng 1-4-5-8/2021 đã được cập nhật liên tục nên biểu đồ sẽ tương tự với câu v.6.}
+		\end{itemize}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/vi6_kenya1.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ ca nhiễm bệnh và tử vong 2 tháng cuối năm}
+			\label{fig:vi6_kenya1}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/vi6_lesotho1.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ ca nhiễm bệnh và tử vong 2 tháng cuối năm}
+			\label{fig:vi6_lesotho1}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/v6_morocco1.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ ca nhiễm bệnh và tử vong 2 tháng cuối năm}
+			\label{fig:v6_morocco1}
+		\end{figure}
+		\clearpage		
+		\item Biểu đồ thể hiện thu thập dữ liệu nhiễm bệnh tích lũy cho từng tháng
+		\begin{itemize}
+			\item Tìm dữ liệu nhiễm bệnh tích lũy cho từng tháng	
+			$$
+			\begin{array}{rcl}
+				A  =  \frac{\sum\limits_{i=1}^{n}ai*i}{\sum\limits_{i=1}^{n}n}\\
+				
+			\end{array}
+			$$
+			\item A:giá trị tích lũy của dữ liệu
+			\item i: ngày thứ i của tháng
+			\item ai: dữ liệu ca nhiễm thu thập được của ngày thứ i
+			\item $a_{i} = avg$: thay thế giá trị không thường xuyên bằng trung bình 7 ngày gần nhất
+			\item n: tổng số ca nhiễm trong tháng
+			\item \textcolor{red}{Vì các số liệu ở các tháng 1-4-5-8/2021 đã được cập nhật liên tục nên biểu đồ sẽ tương tự với câu v.7.}
+		\end{itemize}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/vi7_jan_2022.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập dữ liểu ca nhiễm tích lũy trong mỗi tháng của 3 quốc gia}
+			\label{fig:vi7_jan_2022}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/vi7_aug.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập dữ liểu ca nhiễm tích lũy trong mỗi tháng của 3 quốc gia}
+			\label{fig:vi7_aug}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/vi7_apr.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập dữ liểu ca nhiễm tích lũy trong mỗi tháng của 3 quốc gia}
+			\label{fig:vi7_apr}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.5\linewidth]{IMG/vi7_may.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập dữ liểu ca nhiễm tích lũy trong mỗi tháng của 3 quốc gia}
+			\label{fig:vi7_may}
+		\end{figure}
+		\clearpage
+		\item Biểu đồ thể hiện thu thập dữ liệu tử vong tích lũy cho từng tháng
+		\begin{itemize}
+			\item Tìm dữ liệu nhiễm bệnh tích lũy cho từng tháng
+			$$
+			\begin{array}{rcl}
+				A  =  \frac{\sum\limits_{i=1}^{n}bi*i}{\sum\limits_{i=1}^{n}n}\\
+				
+			\end{array}
+			$$
+			\item A:giá trị tích lũy của dữ liệu
+			\item i: ngày thứ i của tháng
+			\item bi: dữ liệu ca nhiễm thu thập được của ngày thứ i 
+			\item $b_{i} = avg$: thay thế giá trị không thường xuyên bằng trung bình 7 ngày gần nhất
+			\item n: tổng số ca tử vong trong tháng
+			\item \textcolor{red}{Vì số liệu ở các tháng 1-4-5-8/2021 đã được cập nhật liên tục nên biểu đồ tương tự với câu v.8.}
+		\end{itemize}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/vi8_jan_2022.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập dữ liểu tử vong tích lũy trong mỗi tháng của 3 quốc gia}
+			\label{fig:vi8_jan_2022}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/vi8_aug.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập dữ liểu tử vong tích lũy trong mỗi tháng của 3 quốc gia}
+			\label{fig:vi8_aug}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/vi8_may.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ thu thập dữ liểu tử vong tích lũy trong mỗi tháng của 3 quốc gia}
+			\label{fig:vi8_may}
+		\end{figure}
+		
+	\end{enumerate}
+	\clearpage
+	 \section{Nhóm câu hỏi liên quan đến tất cả quốc gia theo thời gian là tháng}\label{part7}
+	\begin{enumerate}
+		[1)]
+		%cau 1
+		\item Biểu đồ thể hiện thu thập dữ liệu nhiễm bệnh theo thời gian là tháng của tất cả quốc gia
+				\begin{itemize}
+					\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của tất cả quốc gia
+					\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+					\item $A = \{1, 8, 4, 5\}$: các tháng thống kê
+					\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+					\item $a_{j} = x_{i} \forall z_{j} \in A$: dữ liệu nhiễm bệnh tháng 1, 8, 4, 5 của tất cả quốc gia
+				\end{itemize}
+				\begin{figure}[!h]
+					\centering					
+					\includegraphics[width=0.75\linewidth]{IMG/vii_1_2020.png}
+					\vspace*{5mm}
+					\caption{Dữ liệu nhiễm bệnh tất cả quốc gia năm 2020}
+					\label{fig:vii_1_2020}
+				\end{figure}
+				\begin{figure}[!h]
+					\centering
+					\includegraphics[width=0.75\linewidth]{IMG/vii_1_2021.png}
+					\vspace*{5mm}
+					\caption{Dữ liệu nhiễm bệnh tất cả quốc gia năm 2021}
+					\label{fig:vii_1_2021}
+				\end{figure}
+				\begin{figure}[!h]
+					\centering
+					\includegraphics[width=0.75\linewidth]{IMG/vii_1_2022.png}
+					\vspace*{5mm}
+					\caption{Dữ liệu nhiễm bệnh tất cả quốc gia năm 2022}
+					\label{fig:vii_1_2022}
+				\end{figure}
+		\clearpage
+		
+		%cau 2
+		\item Biểu đồ thể hiện thu thập dữ liệu tử vong theo thời gian là tháng của tất cả quốc gia
+			\begin{itemize}
+				\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của tất cả quốc gia
+				\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+				\item $A = \{1, 8, 4, 5\}$: các tháng thống kê
+				\item $x_{i}$: số ca tử vong của ngày $d_{i}$
+				\item $a_{j} = x_{i} \forall z_{j} \in A$: dữ liệu tử vong tháng 1, 8, 4, 5 của tất cả quốc gia
+			\end{itemize}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.75\linewidth]{IMG/vii_2_2020.png}
+				\vspace*{5mm}
+				\caption{Dữ liệu tử vong tất cả quốc gia năm 2020}
+				\label{fig:vii_2_2020}
+			\end{figure}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.75\linewidth]{IMG/vii_2_2021.png}
+				\vspace*{5mm}
+				\caption{Dữ liệu tử vong tất cả quốc gia năm 2021}
+				\label{fig:vii_2_2021}
+			\end{figure}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.75\linewidth]{IMG/vii_2_2022.png}
+				\vspace*{5mm}
+				\caption{Dữ liệu tử vong tất cả quốc gia năm 2022}
+				\label{fig:vii_2_2022}
+			\end{figure}
+		\clearpage
+		
+		%cau 3
+		\item Biểu đồ thể hiện thu thập dữ liệu nhiễm bệnh theo thời gian là 2 tháng cuối của năm của tất cả quốc gia
+			\begin{itemize}
+				\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của tất cả quốc gia
+				\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+				\item $A = \{11, 12\}$: các tháng thống kê
+				\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+				\item $a_{j} = x_{i} \forall z_{j} \in A$: dữ liệu nhiễm bệnh tháng 11, 12 của tất cả quốc gia
+			\end{itemize}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.75\linewidth]{IMG/vii_3_2020.png}
+				\vspace*{5mm}
+				\caption{Dữ liệu nhiễm bệnh 2 tháng cuối năm 2020 của tất cả quốc gia}
+				\label{fig:vii_3_2020}
+			\end{figure}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.75\linewidth]{IMG/vii_3_2021.png}
+				\vspace*{5mm}
+				\caption{Dữ liệu nhiễm bệnh 2 tháng cuối năm 2021 của tất cả quốc gia}
+				\label{fig:vii_3_2021}
+			\end{figure}
+		\clearpage
+		
+		%cau 4
+		\item Biểu đồ thể hiện thu thập dữ liệu tử vong theo thời gian là 2 tháng cuối của năm của tất cả quốc gia
+			\begin{itemize}
+				\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của tất cả quốc gia
+				\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+				\item $A = \{11, 12\}$: các tháng thống kê
+				\item $x_{i}$: số ca tử vong của ngày $d_{i}$
+				\item $a_{j} = x_{i} \forall z_{j} \in A$: dữ liệu tử vong tháng 11, 12 của tất cả quốc gia
+			\end{itemize}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.75\linewidth]{IMG/vii_4_2020.png}
+				\vspace*{5mm}
+				\caption{Dữ liệu tử vong 2 tháng cuối năm 2020 của tất cả quốc gia}
+				\label{fig:vii_4_2020}
+			\end{figure}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.75\linewidth]{IMG/vii_4_2021.png}
+				\vspace*{5mm}
+				\caption{Dữ liệu tử vong 2 tháng cuối năm 2021 của tất cả quốc gia}
+				\label{fig:vii_4_2021}
+			\end{figure}
+		\clearpage
+		
+		%cau 5
+		\item Biểu đồ thể hiện thu thập dữ liệu nhiễm bệnh tương đối tích lũy theo thời gian là 2 tháng cuối của năm của tất cả quốc gia
+			\begin{itemize}
+				\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của tất cả quốc gia
+				\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+				\item $A = \{11, 12\}$: các tháng thống kê
+				\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+				\item $d_{max} \in \{d_{max} | d_{max} \in A \land d_{max} \geq d_{i} \forall d_{i} \in A\}$: ngày cuối cùng thu thập dữ liệu
+				\item $d_{min} \in \{d_{min} | d_{min} \in A \land d_{min} \leq d_{i} \forall d_{i} \in A\}$: ngày đầu thu thập dữ liệu
+				\item $a_{j} = \dfrac{\sum_{n=d_{min}}^{d_{j}}x_{j}}{\sum_{n=d_{min}}^{d_{max}}x_{j}} * 100 \forall z_{j} \in A$: dữ liệu nhiễm bệnh tương đối tích lũy của ngày $a_{j}$
+			\end{itemize}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.75\linewidth]{IMG/vii_5_2020.png}
+				\vspace*{5mm}
+				\caption{Dữ liệu nhiễm bệnh tương đối tích lũy 2 tháng cuối năm 2020 của tất cả quốc gia}
+				\label{fig:vii_5_2020}
+			\end{figure}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.75\linewidth]{IMG/vii_5_2021.png}
+				\vspace*{5mm}
+				\caption{Dữ liệu nhiễm bệnh tương đối tích lũy 2 tháng cuối năm 2021 của tất cả quốc gia}
+				\label{fig:vii_5_2021}
+			\end{figure}
+		\clearpage
+		
+		%cau 6
+		\item Biểu đồ thể hiện thu thập dữ liệu tử vong tương đối tích lũy theo thời gian là 2 tháng cuối của năm của tất cả quốc gia
+			\begin{itemize}
+				\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của tất cả quốc gia
+				\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+				\item $A = \{11, 12\}$: các tháng thống kê
+				\item $x_{i}$: số ca tử vong của ngày $d_{i}$
+				\item $d_{max} \in \{d_{max} | d_{max} \in A \land d_{max} \geq d_{i} \forall d_{i} \in A\}$: ngày cuối cùng thu thập dữ liệu
+				\item $d_{min} \in \{d_{min} | d_{min} \in A \land d_{min} \leq d_{i} \forall d_{i} \in A\}$: ngày đầu thu thập dữ liệu
+				\item $a_{j} = \dfrac{\sum_{n=d_{min}}^{d_{j}}x_{i}}{\sum_{n=d_{min}}^{d_{max}}x_{i}} * 100 \forall z_{j} \in A$: dữ liệu tử vong tương đối tích lũy của ngày $a_{j}$
+			\end{itemize}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.75\linewidth]{IMG/vii_6_2020.png}
+				\vspace*{5mm}
+				\caption{Dữ liệu tử vong tương đối tích lũy 2 tháng cuối năm 2020 của tất cả quốc gia}
+				\label{fig:vii_6_2020}
+			\end{figure}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.75\linewidth]{IMG/vii_6_2021.png}
+				\vspace*{5mm}
+				\caption{Dữ liệu tử vong tương đối tích lũy 2 tháng cuối năm 2021 của tất cả quốc gia}
+				\label{fig:vii_6_2021}
+			\end{figure}
+		\clearpage
+	\end{enumerate}
+
+ \section{Nhóm câu hỏi liên quan đến tất cả quốc gia theo trung bình 7 ngày gần nhất}\label{part8}
+\begin{enumerate}
+	[1)]
+	%cau 1
+	\item Biểu đồ thể hiện thu thập dữ liệu nhiễm bệnh theo thời gian là tháng của tất cả quốc gia theo trung bình 7 ngày gần nhất
+	
+		\begin{itemize}
+			\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của tất cả quốc gia
+			\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+			\item $A = \{1, 8, 4, 5\}$: các tháng thống kê
+			\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+			\item $a_{j} = \dfrac{\sum_{n=i-6}^{i}x_{i}}{\sum_{n=i-6}^{i}1}\forall z_{j} \in A$: dữ liệu nhiễm bệnh theo trung bình 7 ngày gần nhất của ngày $a_{j}$
+		\end{itemize}
+	
+	
+		\begin{figure}[!h]
+			\centering
+		
+			\includegraphics[width=0.75\linewidth]{IMG/viii_1_2020.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu nhiễm bệnh theo thời gian là tháng của tất cả quốc gia theo trung bình 7 ngày gần nhất năm 2020}
+			\label{fig:viii_1_2020}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			
+			\includegraphics[width=0.75\linewidth]{IMG/viii_1_2021.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu nhiễm bệnh theo thời gian là tháng của tất cả quốc gia theo trung bình 7 ngày gần nhất năm 2021}
+			\label{fig:viii_1_2021}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			
+			\includegraphics[width=0.75\linewidth]{IMG/viii_1_2022.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu nhiễm bệnh theo thời gian là tháng của tất cả quốc gia theo trung bình 7 ngày gần nhất năm 2022}
+			\label{fig:viii_1_2022}
+		\end{figure}
+	
+	\clearpage
+	
+	%cau 2
+	\item Biểu đồ thể hiện thu thập dữ liệu tử vong theo thời gian là tháng của tất cả quốc gia theo trung bình 7 ngày gần nhất
+	
+		\begin{itemize}
+			\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của tất cả quốc gia
+			\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+			\item $A = \{1, 8, 4, 5\}$: các tháng thống kê
+			\item $x_{i}$: số ca tử vong của ngày $d_{i}$
+			\item $a_{j} = \dfrac{\sum_{n=i-6}^{i}x_{i}}{\sum_{n=i-6}^{i}1}\forall z_{j} \in A$: dữ liệu tử vong trung bình 7 ngày gần nhất của ngày $a_{j}$
+		\end{itemize}
+	
+	
+		\begin{figure}[!h]
+			\centering
+			
+			\includegraphics[width=0.75\linewidth]{IMG/viii_2_2020.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu tử vong theo thời gian là tháng của tất cả quốc gia theo trung bình 7 ngày gần nhất năm 2020}
+			\label{fig:viii_2_2020}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			
+			\includegraphics[width=0.75\linewidth]{IMG/viii_2_2021.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu tử vong theo thời gian là tháng của tất cả quốc gia theo trung bình 7 ngày gần nhất năm 2021}
+			\label{fig:viii_2_2021}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			
+			\includegraphics[width=0.75\linewidth]{IMG/viii_2_2022.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu tử vong theo thời gian là tháng của tất cả quốc gia theo trung bình 7 ngày gần nhất năm 2022}
+			\label{fig:viii_2_2022}
+		\end{figure}
+	
+	\clearpage
+	
+	%cau 3
+	\item Biểu đồ thể hiện thu thập dữ liệu nhiễm bệnh theo thời gian là 2 tháng cuối năm của tất cả quốc gia theo trung bình 7 ngày gần nhất
+	
+		\begin{itemize}
+			\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của tất cả quốc gia
+			\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+			\item $A = \{11, 12\}$: các tháng thống kê
+			\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+			\item $a_{j} = \dfrac{\sum_{n=i-6}^{i}x_{i}}{\sum_{n=i-6}^{i}1}\forall z_{j} \in A$: dữ liệu nhiễm bệnh theo trung bình 7 ngày gần nhất của ngày $a_{j}$
+		\end{itemize}
+	
+	
+		\begin{figure}[!h]
+			\centering
+		
+			\includegraphics[width=0.75\linewidth]{IMG/viii_3_2020.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu nhiễm bệnh theo thời gian 2 tháng cuối năm 2020 của tất cả quốc gia theo trung bình 7 ngày gần nhất}
+			\label{fig:viii_3_2020}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			
+			\includegraphics[width=0.75\linewidth]{IMG/viii_3_2021.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu nhiễm bệnh theo thời gian 2 tháng cuối năm 2021 của tất cả quốc gia theo trung bình 7 ngày gần nhất}
+			\label{fig:viii_3_2021}
+		\end{figure}
+	
+	\clearpage
+	
+	%cau 4
+	\item Biểu đồ thể hiện thu thập dữ liệu tử vong theo thời gian là 2 tháng cuối năm của tất cả quốc gia theo trung bình 7 ngày gần nhất
+	
+		\begin{itemize}
+			\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của tất cả quốc gia
+			\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+			\item $A = \{11, 12\}$: các tháng thống kê
+			\item $x_{i}$: số ca tử vong của ngày $d_{i}$
+			\item $a_{j} = \dfrac{\sum_{n=i-6}^{i}x_{i}}{\sum_{n=i-6}^{i}1}\forall z_{j} \in A$: dữ liệu tử vong theo trung bình 7 ngày gần nhất của ngày $a_{j}$
+		\end{itemize}
+	
+	
+		\begin{figure}[!h]
+			\centering
+			
+			\includegraphics[width=0.75\linewidth]{IMG/viii_4_2020.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu tử vong theo thời gian 2 tháng cuối năm 2020 của tất cả quốc gia theo trung bình 7 ngày gần nhất}
+			\label{fig:viii_4_2020}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			
+			\includegraphics[width=0.75\linewidth]{IMG/viii_4_2021.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu tử vong theo thời gian 2 tháng cuối năm 2021 của tất cả quốc gia theo trung bình 7 ngày gần nhất}
+			\label{fig:viii_4_2021}
+		\end{figure}
+	
+	\clearpage
+	
+	%cau 5
+	\item Biểu đồ thể hiện thu thập dữ liệu nhiễm bệnh tích lũy theo thời gian là 2 tháng cuối năm của tất cả quốc giaị theo trung bình 7 ngày gần nhất
+	
+		\begin{itemize}
+			\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của tất cả quốc gia
+			\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+			\item $A = \{11, 12\}$: các tháng thống kê
+			\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+			\item $a_{j} = \sum_{n=d_{min}}^{d_{j}}x_{j} \forall z_{j} \in A$: dữ liệu nhiễm bệnh tích lũy của ngày $a_{j}$
+		\end{itemize}
+	
+	
+		\begin{figure}[!h]
+			\centering
+			
+			\includegraphics[width=0.75\linewidth]{IMG/viii_5_2020.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu nhiễm bệnh theo thời gian 2 tháng cuối năm 2020 của tất cả quốc gia theo trung bình 7 ngày gần nhất}
+			\label{fig:viii_5_2020}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			
+			\includegraphics[width=0.75\linewidth]{IMG/viii_5_2021.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu nhiễm bệnh theo thời gian 2 tháng cuối năm 2021 của tất cả quốc gia theo trung bình 7 ngày gần nhất}
+			\label{fig:viii_5_2021}
+		\end{figure}
+	
+	\clearpage
+	
+	%cau 6
+	\item Biểu đồ thể hiện thu thập dữ liệu tử vong tích lũy theo thời gian là 2 tháng cuối năm của tất cả quốc giaị theo trung bình 7 ngày gần nhất
+		\begin{itemize}
+			\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của tất cả quốc gia
+			\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+			\item $A = \{11, 12\}$: các tháng thống kê
+			\item $x_{i}$: số ca tử vong của ngày $d_{i}$
+			\item $a_{j} = \sum_{n=d_{min}}^{d_{j}}x_{j} \forall z_{j} \in A$: dữ liệu tử vong tích lũy của ngày $a_{j}$
+		\end{itemize}
+		\begin{figure}[!h]
+			\centering
+			
+			\includegraphics[width=0.75\linewidth]{IMG/viii_6_2020.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu tử vong theo thời gian 2 tháng cuối năm 2020 của tất cả quốc gia theo trung bình 7 ngày gần nhất}
+			\label{fig:viii_6_2020}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			
+			\includegraphics[width=0.75\linewidth]{IMG/viii_6_2021.png}
+			\vspace*{5mm}
+			\caption{Dữ liệu tử vong theo thời gian 2 tháng cuối năm 2021 của tất cả quốc gia theo trung bình 7 ngày gần nhất}
+			\label{fig:viii_6_2021}
+		\end{figure}
+	\clearpage
+\end{enumerate}
+
+	\clearpage
+	\section{Nhóm câu hỏi liên quan đến sự tương quan giữa nhiễm bệnh và tử vong}\label{part9} 	
+		\begin{enumerate} [1)]
+			\item Vẽ biểu đồ thể hiện phần trăm giữa nhiễm bệnh tích lũy trên tổng nhiễm bệnh và phần trăm tử vong tích lũy trên tổng số tử vong cho từng quốc gia theo thời gian. Vẽ 2 đường trên cùng biểu đồ\\
+	\textbf{Cách giải}
+	\begin{itemize}
+				\item $P$: tập hợp các ngày thu thập dữ liệu
+				\item $n_{i}$: ngày thứ $i$
+				\item $x_{i}$: số ca nhiễm bệnh của ngày thứ $i$
+				\item $y_{i}$: số ca tử vong của ngày thứ $i$
+				\item $n_{max} \in \{n_{max} | n_{max} \in P, n_{max} \geq n_{i} \forall n_{i} \in P\}$: ngày cuối cùng thu thập dữ liệu
+				\item $n_{min} \in \{n_{min} | n_{min} \in P, n_{min} \leq n_{i} \forall n_{i} \in P\}$: ngày đầu thu thập dữ liệu
+			\item  $a_{i} = \sum_{n=n_{min}}^{n_{i}}x_{i}$: Số ca nhiễm bệnh tích lũy ngày $i$ 
+			\item $b_{i} = \sum_{n=n_{min}}^{n_{i}}y_{i}$: Số ca tử vong tích lũy ngày $i$ 
+			\item $c_{i} = \dfrac{a_{i}}{\sum_{n=n_{min}}^{n_{max}}x_{i}}$: Tỷ lệ ca nhiễm bệnh tích lũy ngày $i$ trên tổng ca nhiễm
+			\item $d_{i} = \dfrac{b_{i}}{\sum_{n=n_{min}}^{n_{max}}y_{i}}$: Tỷ lệ ca tử vong tích lũy ngày $i$ trên tổng ca nhiễm
+			
+		\end{itemize}
+		\textbf{Kết quả}
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.6\linewidth]{IMG/ix1ken.png}
+				\vspace*{5mm}
+				\caption{Phần trăm nhiễm bệnh tích lũy trên tổng nhiễm bệnh và phần trăm tử vong tích lũy trên tổng số tử vong tại Kenya}
+				\label{fig:ix1ken}
+			\end{figure}
+		
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.6\linewidth]{IMG/ix1lso.png}
+				\vspace*{5mm}
+				\caption{Phần trăm nhiễm bệnh tích lũy trên tổng nhiễm bệnh và phần trăm tử vong tích lũy trên tổng số tử vong tại Lesotho}
+				\label{fig:ix1lso}
+			\end{figure}
+		
+			\begin{figure}[!h]
+				\centering
+				\includegraphics[width=0.6\linewidth]{IMG/ix1mar.png}
+				\vspace*{5mm}
+				\caption{Phần trăm nhiễm bệnh tích lũy trên tổng nhiễm bệnh và phần trăm tử vong tích lũy trên tổng số tử vong tại Morocco}
+				\label{fig:ix1mar}
+			\end{figure}
+		
+		\clearpage Trên từng quốc gia riêng của nhóm hãy vẽ biểu đồ thể hiện trục Ox là nhiễm bệnh, trục Oy là tử vong. Hãy lấy 4 tháng theo 4 ký số mã đề thể hiện. Nếu ký số là 0 thì lấy tháng là 10.
+		\item Xét tương quan trong mỗi tháng\\ 
+		\textbf{Cách giải}
+		\begin{itemize}
+		\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của 1 quốc gia
+		\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+		\item $A = \{1, 8, 4, 5\}$: các tháng thống kê
+		\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+		\item $y_{i}$: số ca tử vong của ngày $d_{i}$
+		\item $d_{max} \in \{d_{max} | d_{max} \in P \land d_{max} \geq d_{i} \forall d_{i} \in D\}$: ngày cuối cùng thu thập dữ liệu
+		\item $d_{min} \in \{d_{min} | d_{min} \in P \land d_{min} \leq d_{i} \forall d_{i} \in D\}$: ngày đầu thu thập dữ liệu
+		\item $\bar{x_{j}} = \dfrac{\sum_{n=d_{min}}^{d_{i}}x_{i}}{\sum_{n=d_{min}}^{d_{i}}1} \forall z_{j} \in A$: trung bình số nhiễm bệnh của từng tháng 1, 8, 4, 5
+		\item $\bar{y_{j}} = \dfrac{\sum_{n=d_{min}}^{d_{i}}y_{i}}{\sum_{n=d_{min}}^{d_{i}}1} \forall z_{j} \in A$: trung bình số tử vong của từng tháng 1, 8, 4, 5
+		\item $p_{j}$: hệ số tương quan giữa nhiễm bệnh và tử vong trong tháng $z_{j}$
+			\begin{center}
+				$p_{j} = \dfrac
+				{\sum_{n=d_{min}}^{d_{max}} (x_{i} - \bar{x_{j}}) (y_{i} - \bar{y_{j}})}
+				{\sqrt{\sum_{n=d_{min}}^{d_{max}} (x_{i} - \bar{x_{j}})^2 \sum_{n=d_{min}}^{d_{max}} (y_{i} - \bar{y_{j}})^2}}$
+				\end{center}
+			\end{itemize}
+		\textbf{Kết quả}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix2_ken_jan.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong tháng 1 tại Kenya}
+	\label{fig:ix2_ken_jan}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix2_ken_apr.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong tháng 4 tại Kenya}
+	\label{fig:ix2_ken_apr}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix2_ken_may.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong tháng 5 tại Kenya}
+	\label{fig:ix2_ken_may}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix2_ken_aug.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong tháng 8 tại Kenya}
+	\label{fig:ix2_ken_aug}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix2_mar_jan.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong tháng 1 tại Morocco}
+	\label{fig:ix2_mar_jan}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix2_mar_apr.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong tháng 4 tại Morocco}
+	\label{fig:ix2_mar_apr}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix2_mar_may.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong tháng 5 tại Morocco}
+	\label{fig:ix2_mar_may}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix2_mar_aug.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong tháng 8 tại Morocco}
+	\label{fig:ix2_mar_aug}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix2_lso_jan.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong tháng 1 tại Lesotho}
+	\label{fig:ix2_lso_jan}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix2_lso_apr.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong tháng 4 tại Lesotho}
+	\label{fig:ix2_lso_apr}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix2_lso_may.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong tháng 5 tại Lesotho}
+	\label{fig:ix2_lso_may}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix2_lso_aug.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong tháng 8 tại Lesotho}
+	\label{fig:ix2_lso_aug}
+\end{figure}
+	
+		\clearpage 
+		\item Xét tương quan trong mỗi tháng theo trung bình 7 ngày gần nhất\\
+		\textbf{Cách giải}
+			\begin{itemize}
+				\item $D = \{d_{i}\}$: tập hợp các ngày thu thập dữ liệu của 1 quốc gia
+				\item $f: D \to Z $: $f(x)$ là hàm tìm tháng từ ngày x
+				\item $A = \{1, 8, 4, 5\}$: các tháng thống kê
+				\item $x_{i}$: số ca nhiễm bệnh của ngày $d_{i}$
+				\item $a_{i} = \dfrac{\sum_{n = i-6}^{i} x_{i}}{\sum_{n = i-6}^{i} 1}$: trung bình ca nhiễm bệnh trong 7 ngày gần nhất
+				\item $y_{i}$: số ca tử vong của ngày $d_{i}$
+				\item $b_{i} = \dfrac{\sum_{n = i-6}^{i} y_{i}}{\sum_{n = i-6}^{i} 1}$: trung bình ca tử vong trong 7 ngày gần nhất
+				\item $d_{max} \in \{d_{max} | d_{max} \in P \land d_{max} \geq d_{i} \forall d_{i} \in D\}$: ngày cuối cùng thu thập dữ liệu
+				\item $d_{min} \in \{d_{min} | d_{min} \in P \land d_{min} \leq d_{i} \forall d_{i} \in D\}$: ngày đầu thu thập dữ liệu
+				\item $\bar{a_{j}} = \dfrac{\sum_{n=d_{min}}^{d_{i}}a_{i}}{\sum_{n=d_{min}}^{d_{i}}1} \forall z_{j} \in A$: trung bình của trung bình số nhiễm bệnh trong 7 ngày gần nhất của từng tháng 1, 8, 4, 5
+				\item $\bar{b_{j}} = \dfrac{\sum_{n=d_{min}}^{d_{i}}b_{i}}{\sum_{n=d_{min}}^{d_{i}}1} \forall z_{j} \in A$: trung bình số tử vong của từng tháng 1, 8, 4, 5
+				\item $p_{j}$: hệ số tương quan giữa nhiễm bệnh và tử vong (trung bình 7 ngày gần nhất) trong tháng $z_{j}$
+				\begin{center}
+					$p_{j} = \dfrac
+					{\sum_{n=d_{min}}^{d_{max}} (a_{i} - \bar{a_{j}}) (b_{i} - \bar{b_{j}})}
+					{\sqrt{\sum_{n=d_{min}}^{d_{max}} (a_{i} - \bar{a_{j}})^2 \sum_{n=d_{min}}^{d_{max}} (b_{i} - \bar{b_{j}})^2}}$
+				\end{center}
+			\end{itemize}
+		\textbf{Kết quả}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix3_ken_jan.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong (trung bình 7 ngày) tháng 1 tại Kenya}
+	\label{fig:ix3_ken_jan}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix3_ken_apr.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong (trung bình 7 ngày) tháng 4 tại Kenya}
+	\label{fig:ix3_ken_apr}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix3_ken_may.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong (trung bình 7 ngày) tháng 5 tại Kenya}
+	\label{fig:ix3_ken_may}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix3_ken_aug.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong (trung bình 7 ngày) tháng 8 tại Kenya}
+	\label{fig:ix3_ken_aug}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix3_mar_jan.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong (trung bình 7 ngày) tháng 1 tại Morocco}
+	\label{fig:ix3_mar_jan}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix3_mar_apr.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong (trung bình 7 ngày) tháng 4 tại Morocco}
+	\label{fig:ix3_mar_apr}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix3_mar_may.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong (trung bình 7 ngày) tháng 5 tại Morocco}
+	\label{fig:ix3_mar_may}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix3_mar_aug.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong (trung bình 7 ngày) tháng 8 tại Morocco}
+	\label{fig:ix3_mar_aug}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix3_lso_jan.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong (trung bình 7 ngày) tháng 1 tại Lesotho}
+	\label{fig:ix3_lso_jan}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix3_lso_apr.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong (trung bình 7 ngày) tháng 4 tại Lesotho}
+	\label{fig:ix3_lso_apr}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix3_lso_may.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong (trung bình 7 ngày) tháng 5 tại Lesotho}
+	\label{fig:ix3_lso_may}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{IMG/ix3_lso_aug.png}
+	\vspace*{5mm}
+	\caption{Tương quan nhiễm bệnh và tử vong (trung bình 7 ngày) tháng 8 tại Lesotho}
+	\label{fig:ix3_lso_aug}
+\end{figure}
+
+	\end{enumerate}
+	
+	\clearpage
+	\section{Nhóm câu hỏi riêng}\label{part10}
+	
+	 \begin{enumerate}[1)]
+		\item So sánh tình trạng nhiễm bệnh của các quốc gia trong 7 ngày cuối của năm cuối cùng\\
+		\textbf{Cách giải}
+		\begin{itemize}
+		\item $A$: tập hợp các bản ghi
+		\item $d_{i}$: ngày của bản ghi thứ $i$ của $A$
+		\item $f1: A \to B$ với $f1$ là hàm lấy ra năm từ ngày của bản ghi của $A$
+		\item $y_{max} \in \{y_{max} | y_{max} \in B \land y_{max} \geq y_{i} \forall y_{i} \in B\}$: năm cuối cùng
+		\item $d_{max} \in \{d_{max} | d_{max} \in A \land d_{max} \geq d_{i} \forall d_{i} \in A\}$: ngày cuối cùng thu thập dữ liệu
+		\item $G = \{A_{i} | f1(A_{i}) = y_{max} \land d_{i} \geq d_{max} - 6 \}$: tập hợp các bản ghi trong 7 ngày cuối của năm cuối cùng
+		\item $g_{j}$: số ca nhiễm mới của bản ghi thứ $j$ của $G$
+		\item $f2: G \to C $ với $f2$ là hàm lấy ra quốc gia từ bản ghi của $G$
+		\item $b_{c_{k}} = \sum_{n = d_{max} - 6}^{ d_{max}} g_{i} \forall f2(G) = c_{k}$: tổng số ca nhiễm mới của quốc gia $c_{k}$ trong 7 ngày cuối của năm cuối cùng
+		\item $e_{c_{k}} = \dfrac{\sum_{n = d_{max} - 6}^{ d_{max}} g_{i}}{\sum_{n = d_{max} - 6}^{ d_{max}} 1} \forall f2(G) = c_{k}$: trung bình số ca nhiễm mới của quốc gia $c_{k}$ trong 7 ngày cuối của năm cuối cùng
+			\end{itemize}
+		\textbf{Kết quả}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.75\linewidth]{IMG/x1.png}
+			\vspace*{5mm}
+			\caption{Danh sách 10 nước có tổng số ca nhiễm bệnh trong 7 ngày cuối của năm cuối cùng cao nhất}
+			\label{fig:x1}
+		\end{figure}
+		\clearpage
+		\item Với k là mốc bùng phát dịch, hãy xác định k và cho biết các khoảng thời gian bùng phát\\
+		\textbf{Cách giải}\\
+		Chọn mốc $k = 3000000$ ứng với tổng số ca nhiễm mới trong 7 ngày gần nhất.
+			\begin{itemize}
+		\item $A$: tập hợp các bản ghi, $d_{i}$: ngày của bản ghi thứ $i$ của $A$
+		\item $x_{i}$: số ca nhiễm bệnh của bản ghi thứ $i$ của $A$
+		\item $a_{i} = \sum_{d_{i - 6}}^{d_{i}} x_{i}$: tổng số ca nhiễm bệnh của 7 ngày gần nhất ở ngày $d_{i}$
+		\item $b_{i} = \sum_{d_{i - 7}}^{d_{i-1}} x_{i}$: tổng số ca nhiễm bệnh của 7 ngày gần nhất ở ngày $d_{i-1}$
+		\item $c_{i} = \sum_{d_{i - 5}}^{d_{i+1}} x_{i}$: tổng số ca nhiễm bệnh của 7 ngày gần nhất ở ngày $d_{i+1}$
+		\item $o_{i}$: số lần bùng phát dịch đã từng xảy ra tính tới ngày $d_{i}$\\ $o_{i} = \sum_{1}^{i} f1(a_{i},b_{i},c_{i})$ 
+		với $ f1(a_{i},b_{i},c_{i})= 
+		\begin{cases}
+			1,& a_{i} > k \land c_{i} > k  \land b_{i} < k \\
+			0,& \neg (a_{i} > k \land c_{i} > k  \land b_{i} < k)
+		\end{cases}$
+		\item $e_{i}$: ngày $d_{i}$ thuộc đợt bùng dịch thứ mấy, nếu 0 tức là đang không thuộc đợt bùng dịch nào cả\\
+		$e_{i} = 
+		\begin{cases}
+			o_{i},& a_{i} > k \\
+			0,& a_{i} \leq k
+		\end{cases}$
+		\item $B = \{e_{i}\}, g_{j} \in B$: $B$ là tập hợp các đợt bùng dịch, $g_{j}$ là số thứ tự của đợt bùng dịch
+		\item $h_{j} \in \{h_{j} | h_{j} \in \{d_{i}\} \land h_{j} \leq d_{i} \forall e_{i} = g_{j}\} $: ngày bắt đầu đợt bùng phát dịch $g_{j}$
+		\item $m_{j} \in \{m_{j} | m_{j} \in \{d_{i}\} \land m_{j} \geq d_{i} \forall e_{i} = g_{j}\} $: ngày kết thúc đợt bùng phát dịch $g_{j}$
+			\end{itemize}
+		\textbf{Kết quả}\\
+		Có 4 khoảng thời gian bùng phát dịch như hình sau:
+			\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.4\linewidth]{IMG/x2_list.png}
+			\vspace*{5mm}
+			\caption{Danh sách khoảng thời gian bùng phát dịch}
+			\label{fig:x2}
+			\end{figure}
+			\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/x2_chart.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ số ca nhiễm bệnh trong 7 ngày gần nhất so với mốc bùng phát dịch $k = 3000000$ }
+			\label{fig:x2}
+			\end{figure}
+		\clearpage
+		\item Với k là mốc bùng tử vong, hãy xác định k và cho biết các khoảng thời gian bùng phát \\
+		\textbf{Cách giải}\\
+		Chọn mốc $k = 64000$ ứng với tổng số ca tử vong trong 7 ngày gần nhất.
+		\begin{itemize}
+			\item $A$: tập hợp các bản ghi, $d_{i}$: ngày của bản ghi thứ $i$ của $A$
+			\item $x_{i}$: số ca tử vong của bản ghi thứ $i$ của $A$
+			\item $a_{i} = \sum_{d_{i - 6}}^{d_{i}} x_{i}$: tổng số ca tử vong của 7 ngày gần nhất ở ngày $d_{i}$
+			\item $b_{i} = \sum_{d_{i - 7}}^{d_{i-1}} x_{i}$: tổng số ca tử vong của 7 ngày gần nhất ở ngày $d_{i-1}$
+			\item $c_{i} = \sum_{d_{i - 5}}^{d_{i+1}} x_{i}$: tổng số ca tử vong của 7 ngày gần nhất ở ngày $d_{i+1}$
+			\item $o_{i}$: số lần bùng tử vong đã từng xảy ra tính tới ngày $d_{i}$\\ $o_{i} = \sum_{1}^{i} f1(a_{i},b_{i},c_{i})$ 
+			với $ f1(a_{i},b_{i},c_{i})= 
+			\begin{cases}
+				1,& a_{i} > k \land c_{i} > k  \land b_{i} < k \\
+				0,& \neg (a_{i} > k \land c_{i} > k  \land b_{i} < k)
+			\end{cases}$
+			\item $e_{i}$: ngày $d_{i}$ thuộc đợt bùng tử vong thứ mấy, nếu 0 tức là đang không thuộc đợt bùng tử vong nào cả\\
+			$e_{i} = 
+			\begin{cases}
+				o_{i},& a_{i} > k \\
+				0,& a_{i} \leq k
+			\end{cases}$
+			\item $B = \{e_{i}\}, g_{j} \in B$: $B$ là tập hợp các đợt bùng tử vong, $g_{j}$ là số thứ tự của đợt bùng tử vong
+			\item $h_{j} \in \{h_{j} | h_{j} \in \{d_{i}\} \land h_{j} \leq d_{i} \forall e_{i} = g_{j}\} $: ngày bắt đầu đợt bùng tử vong $g_{j}$
+			\item $m_{j} \in \{m_{j} | m_{j} \in \{d_{i}\} \land m_{j} \geq d_{i} \forall e_{i} = g_{j}\} $: ngày kết thúc đợt bùng tử vong $g_{j}$
+		\end{itemize}
+		Có 4 khoảng thời gian bùng tử vong như hình sau:
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.4\linewidth]{IMG/x3_list.png}
+			\vspace*{5mm}
+			\caption{Danh sách khoảng thời gian bùng tử vong}
+			\label{fig:x3}
+		\end{figure}
+		\begin{figure}[!h]
+			\centering
+			\includegraphics[width=0.6\linewidth]{IMG/x3_chart.png}
+			\vspace*{5mm}
+			\caption{Biểu đồ số ca tử vong trong 7 ngày gần nhất so với mốc bùng tử vong $k = 64000$ }
+			\label{fig:x3}
+		\end{figure}
+	\end{enumerate}
+
+\end{document}
+
